@@ -11,6 +11,8 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -43,7 +45,8 @@ const Header = () => {
       <img className="h-28 m-4" src={LOGO_URL} alt="" />
       {user && (
         <div className="flex justify-between items-center gap-4 font-bold text-xl">
-          <div className="p-2 px-4 bg-green-500 rounded ">Contact us </div>
+          <button className="p-2 px-4 bg-green-500 rounded" onClick={}>Recipe </button>
+          <button className="p-2 px-4 bg-green-500 rounded ">Contact us </button>
 
           <div className="flex  font-bold text-xl">
             <button className=" p-2 px-4 bg-green-500 rounded font-bold text-xl" onClick={handleSignOut}>
