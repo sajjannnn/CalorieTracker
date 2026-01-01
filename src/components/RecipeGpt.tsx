@@ -1,7 +1,7 @@
 
 const RecipeGpt = () => {
   return (
-    <div></div>
+    <div>Recipe</div>
   )
 }
 
