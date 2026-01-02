@@ -2,13 +2,15 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice"
 import gptReducer from "./gptSlice"
 import imageReducer from "./imageSlice"
-
+import activePageReducer from "./activePage"
 
 const appStore = configureStore({
     reducer : {
         user : userReducer,
         gpt : gptReducer,
         image : imageReducer,
+        activePage : activePageReducer,
+
 
     },
 });

@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from "../utilis/firebase";
 import { addUser } from "../utilis/userSlice";
 import { useDispatch } from "react-redux";
-import { USER_AVATAR } from "../utilis/constants";
+import { LOGIN_BG_URL, USER_AVATAR } from "../utilis/constants";
 // import {USER_AVATAR} from "../utilis/contants";
 
 let para1: string = "";
@@ -79,26 +79,25 @@ const Login = () => {
   // } else {
   // }
   return (
-    <div>
-      <div>
-        <Header />
-        {/* <img className="absolute h-full w-full object-cover md:object-center" src={BG_URL} alt="" /> */}
+    <div className="h-screen grid grid-cols-12">
+      <div className=" col-span-7">
+        <img className="-z-5 h-screen object-cover object-center" src={LOGIN_BG_URL} alt="" />
 
       </div>
-      <div className="h-full w-full text-white absolute z-5 flex  justify-center items-center">
-        <form className="z-6 flex h-2/4 w-11/12 md:w-1/4 flex-col items-center justify-center gap-4 md:gap-10 bg-black/70">
-          <h1 className="font-bold text-2xl md:text-5xl"> {isSignin ? "Sign In" : "Sign Up"} </h1>
+      <div className="h-full w-full flex  justify-center items-center col-span-5">
+        <form className="h-full w-full p-8 flex flex-col justify-center items-center">
+          <h1 className="w-3/5 font-bold text-2xl mb-10 md:text-5xl"> {isSignin ? "Sign In" : "Sign Up"} </h1>
           <div className="w-3/5 flex flex-col gap-4 md:gap-7">
-            {!isSignin && <input className="p-3 px-4 bg-black border" ref={name} type="text" placeholder="Name" />}
-            <input className="p-3 px-4 bg-black border" ref={email} type="text" placeholder="Email Address" />
-            <input className="p-3 px-4 bg-black border" ref={password} type="password" placeholder="Password" />
+            {!isSignin && <input className="p-3 px-4  border" ref={name} type="text" placeholder="Name" />}
+            <input className="p-3 px-4 border border-black" ref={email} type="text" placeholder="Email Address" />
+            <input className="p-3 px-4 border border-black" ref={password} type="password" placeholder="Password" />
             <p>{message}</p>
           </div>
 
-          <button onClick={(e) => checkValidator(e)} className="bg-red-700 rounded px-8 py-2 w-3/5 md:text-2xl font-bold">
+          <button onClick={(e) => checkValidator(e)} className="bg-black text-white rounded px-8 py-2 w-3/5 text-3xl font-bold hover:bg-gray-400">
             {isSignin ? "Sign In" : "Sign Up"}
           </button>
-          <p className="cursor-pointer" onClick={LoginType}>
+          <p className="cursor-pointer m-5" onClick={LoginType}>
             {" "}
             {isSignin ? "New? Sign Up Now" : "Already have an account? Sign In"}
           </p>

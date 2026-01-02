@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import groq from "../utilis/openai";
+import  ai from "../utilis/openai";
 import { useDispatch, useSelector } from "react-redux";
 import { addGptResult } from "../utilis/gptSlice";
 import { setImage } from "../utilis/imageSlice";
@@ -10,29 +10,60 @@ const GptSearchBar = () => {
 
   const searchText = useRef<HTMLInputElement>(null);
   const uploadedImage = useSelector((store) => store.image.image_Url);
+  const user = useSelector((store) => store.user);
+
+  
+
 
   const getGroqChatCompletion = () => {
-    const gptQuery =
-      "Act as a fixed value of nutrition value giver system and tell me the meal name at first then nutritions value of protien , carbohydrates, fats , fibre" +
-      searchText?.current?.value +
-      uploadedImage +
-      ". separated by commas like the example resut ahead> Examole result :burger , Protein: 6gm, fats: 2 gm, carbohydrates:3gm,fibre:4gm. strictly give in this format only or only say please provide some info";
+    const gptQuery = `
+You are a nutrition analysis system.
 
-    return groq.chat.completions.create({
-      messages: [
+TASK:
+1. If an image is provided, analyze ONLY the food visible in the image.
+2. Identify the meal name first.
+3. Then provide estimated nutrition values.
+
+RULES:
+- Use the image as the primary source if present.
+- If image is NOT provided, ignore image analysis and use text input only.
+- If neither image nor text gives enough information, reply EXACTLY:
+  "please provide some info"
+- Do NOT add explanations, assumptions, or extra text.
+- Follow the format strictly.
+
+OUTPUT FORMAT (single line, comma separated):
+<meal_name>, Protein: <value>gm, Fats: <value>gm, Carbohydrates: <value>gm, Fibre: <value>gm
+
+INPUT:
+Text: ${searchText?.current?.value || "none"}
+Image: ${uploadedImage || "not_present"}
+`;
+
+       if (!uploadedImage) {
+      return ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: gptQuery,
+      });
+    }
+
+    /* vision */
+    return ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: [
+        { type: "text", text: gptQuery },
         {
-          role: "user",
-          content: gptQuery,
+          type: "image",
+          imageBytes: uploadedImage.split(",")[1], // remove base64 header
         },
       ],
-      model: "openai/gpt-oss-20b",
     });
   };
 
   const handleGptSearchCLick = async () => {
     const chatCompletion = await getGroqChatCompletion();
     //  console.log(chatCompletion.choices[0]?.message?.content || "");
-    const gptResult = chatCompletion.choices[0]?.message?.content?.split(",").map((m) => m.trim());
+    const gptResult = chatCompletion.response.text().split(",").map((m) => m.trim());
 
     console.log(gptResult);
     dispatch(addGptResult(gptResult));
@@ -52,22 +83,22 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="pt-[40%] md:pt-[10%] flex justify-center">
-      <form className="w-full md:w-1/2 bg-green-600 grid grid-cols-12 rounded-3xl p-4 sm:p-6" onSubmit={(e) => e.preventDefault()}>
-        <input type="text" className="p-1 sm:p-4 sm:m-4 col-span-9 bg-gray-600 text-white" placeholder="track" ref={searchText} />
-        <button className="col-span-3  sm:m-4 py-2 px-4 bg-green-950 text-white sm:rounded-lg" onClick={handleGptSearchCLick}>
+    <div className="pt-[10%] flex flex-col text-white font-bold text-2xl">
+      <h1 className="text-black font-bold text-7xl">Welcome {user?.displayName}!</h1>
+      <form className="flex justify-center m-8" onSubmit={(e) => e.preventDefault()}>
+        {" "}
+        <button className="text-white bg-gray-800 text-center p-4" onClick={moreOptions}>
+          +
+        </button>
+        <input type="text" className="p-4 bg-gray-700 w-[600px]" placeholder="Check Food Nutritions" ref={searchText} />
+        <button className="py-2 px-4 bg-black" onClick={handleGptSearchCLick}>
           Check Nutrition
         </button>
-        <button className="text-white bg-green-950 rounded-2xl text-center" onClick={moreOptions}>
-          {" "}
-          +{" "}
-        </button>
-
         {open && (
           <div
             className="absolute flex flex-col mt-32
-                         rounded-xl bg-green-950
-                         p-2 text-white z-50"
+                         rounded-xl bg-black
+                         p-2 z-50"
           >
             <button>📎 Add photos & files</button>
             <input type="file" accept="image/png,image/jpeg" onChange={handleFile} />

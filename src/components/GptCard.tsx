@@ -5,7 +5,7 @@ const GptCard = () => {
   const image_Url = useSelector((store) => store.image.image_Url);
 
   return (
-    <div className="p-32 flex flex-col justify-between items-center border-2 bg-green-500">
+    <div className="p-32 flex justify-evenly">
       <div>
         <img className="h-[600px] w-[600px] object-cover " src={image_Url} alt="uploaded-image" />
       </div>

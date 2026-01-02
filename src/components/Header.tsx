@@ -11,7 +11,9 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  
+  // const address = () =>{
+  //   console.log("clicked");
+  // }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -27,6 +29,7 @@ const Header = () => {
     });
 
     return unsubscribe;
+    
   }, []);
   const user = useSelector((store: RootState) => store.user);
   const handleSignOut = () => {
@@ -39,17 +42,23 @@ const Header = () => {
         navigate("/error");
       });
   };
+  const recipeButton = () => {
+    navigate("/recipe");
+  }
 
   return (
-    <div className="flex justify-between w-full px-6 ">
-      <img className="h-28 m-4" src={LOGO_URL} alt="" />
+    <div className="flex justify-between w-full text-black px-6 fixed">
+      {/* <img className="h-28 m-4" src={LOGO_URL} alt="" /> */}
+      <h1 className="font-serif text-6xl font-extrabold bg-white m-6 p-4">Food Tracker </h1>
       {user && (
         <div className="flex justify-between items-center gap-4 font-bold text-xl">
-          <button className="p-2 px-4 bg-green-500 rounded" onClick={}>Recipe </button>
-          <button className="p-2 px-4 bg-green-500 rounded ">Contact us </button>
+          <button className="p-2 px-4"  onClick={recipeButton}>Home </button>
+          <button className="p-2 px-4 " onClick={recipeButton}>Calorie Check </button>
+          <button className="p-2 px-4 " onClick={recipeButton}>Recipe </button>
+          <button className="p-2 px-4  ">Contact us </button>
 
           <div className="flex  font-bold text-xl">
-            <button className=" p-2 px-4 bg-green-500 rounded font-bold text-xl" onClick={handleSignOut}>
+            <button className=" p-2 px-4 rounded font-bold text-xl" onClick={handleSignOut}>
               Sign out{" "}
             </button>
           </div>

@@ -1,7 +1,10 @@
+import Header from "./Header"
 
 const RecipeGpt = () => {
   return (
-    <div>Recipe</div>
+    <div className="">
+      
+    </div>
   )
 }
 
