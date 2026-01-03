@@ -79,13 +79,13 @@ const Login = () => {
   // } else {
   // }
   return (
-    <div className="h-screen grid grid-cols-12">
+    <div className="h-screen md:grid grid-cols-12">
       <div className=" col-span-7">
-        <img className="-z-5 h-screen object-cover object-center" src={LOGIN_BG_URL} alt="" />
+        <img className="hidden md:block -z-5 h-screen object-cover object-center" src={LOGIN_BG_URL} alt="" />
 
       </div>
       <div className="h-full w-full flex  justify-center items-center col-span-5">
-        <form className=" w-[550px] h-[600px] p-8 flex flex-col justify-center items-center border shadow-2xl">
+        <form className=" w-[550px] h-[600px]  p-8 flex flex-col justify-center items-center md:border md:shadow-2xl">
           <h1 className="w-3/5 font-bold text-2xl mb-10 md:text-5xl"> {isSignin ? "Sign In" : "Sign Up"} </h1>
           <div className="w-3/5 flex flex-col gap-4 md:gap-7">
             {!isSignin && <input className="p-3 px-4  border" ref={name} type="text" placeholder="Name" />}

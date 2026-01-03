@@ -6,7 +6,7 @@ const RecipeContent = () => {
   return (
     <div className="">
       {content.map((step:string, index : number) => {
-        return <p key={index} className="text-2xl">{step}</p>
+        return <p key={index} className="text-sm md:text-2xl">{step}</p>
       })}
     </div>
   )

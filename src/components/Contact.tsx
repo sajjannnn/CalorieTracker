@@ -8,7 +8,7 @@ const Contact = () => {
   return (
     <div className=" flex justify-center">
       <div className="pt-[200px] w-7xl">
-        <div className="flex justify-between w-full">
+        <div className="flex justify-center md:justify-between w-full">
           <div>
             <div className="flex items-center gap-2">
               <div className="text-4xl font-bold">Contact Now!</div>
@@ -25,7 +25,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <img className="h-[900px]" src="https://cdn.prod.website-files.com/66461a94463c3d84ded09b1a/665de686839941a0eb10a7b1_original-4198d65f20450e37d170b009d242e06d-removebg-preview.webp" alt="" />
+          <img className="hidden md:block h-[900px]" src="https://cdn.prod.website-files.com/66461a94463c3d84ded09b1a/665de686839941a0eb10a7b1_original-4198d65f20450e37d170b009d242e06d-removebg-preview.webp" alt="" />
         </div>
       </div>
     </div>

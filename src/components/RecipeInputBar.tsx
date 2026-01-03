@@ -58,9 +58,9 @@ User input: ${searchText.current?.value || ""}
   };
   return (
     <div className="text-white mb-15">
-      <div>
-        <input type="text" className="p-4 bg-gray-700 w-[600px]" placeholder="Search Recipes..." ref={searchText} />
-        <button className="py-4 px-6 bg-black " onClick={handleReuslt} disabled={isLoading}>
+      <div className="flex md:flex-none">
+        <input type="text" className="p-2 md:p-4 bg-gray-700 lg:w-[600px]" placeholder="Search Recipes..." ref={searchText} />
+        <button className="p-2 md:py-4 md:px-6 bg-black " onClick={handleReuslt} disabled={isLoading}>
             {isLoading ? "Analyzing" : "Search"}
         </button>
       </div>

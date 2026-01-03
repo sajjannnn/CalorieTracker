@@ -131,15 +131,15 @@ Text: ${searchText?.current?.value || "none"}
 
   return (
     <div className=" flex flex-col text-white font-bold text-2xl">
-      <h1 className="mb-[40px] text-black font-bold text-5xl">Welcome {user?.displayName}!</h1>
+      <h1 className="md:mb-[40px] text-black font-bold text-2xl md:text-5xl">Welcome {user?.displayName}!</h1>
       
-      <form className="flex justify-center m-8" onSubmit={(e) => e.preventDefault()}>
+      <form className="flex justify-center m-8 text-sm" onSubmit={(e) => e.preventDefault()}>
        
         <button className="text-white bg-gray-800 text-center p-4" onClick={moreOptions}>
           +
         </button>
-        <input type="text" className="p-4 bg-gray-700 w-[600px]" placeholder="Check Food Nutritions" ref={searchText} />
-        <button className="py-2 px-4 bg-black disabled:opacity-50 disabled:cursor-not-allowed" onClick={handleGptSearchCLick} disabled={isLoading}>
+        <input type="text" className="p-4 bg-gray-700 lg:w-[600px]" placeholder="Check Food Nutritions" ref={searchText} />
+        <button className="py-2 px-4 bg-black " onClick={handleGptSearchCLick} disabled={isLoading}>
           {isLoading ? "Analyzing..." : "Check Nutrition"}
         </button>
       </form>

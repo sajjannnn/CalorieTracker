@@ -8,7 +8,7 @@ const GptCard = () => {
   return (
     <div className="mt-10 flex justify-between">
       <div>
-        <img className="h-[600px] w-[600px] object-cover " src={image_Url} alt="uploaded-image" />
+        <img className="hidden md:block h-[600px] w-[600px] object-cover " src={image_Url} alt="uploaded-image" />
       </div>
       <div className="my-16 w-[600px]">
         <h1 className="text-3xl font-bold">Your Meal</h1>
