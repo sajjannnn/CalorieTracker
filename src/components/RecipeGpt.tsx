@@ -1,11 +1,20 @@
-import Header from "./Header"
+import RecipeContent from "./RecipeContent";
+import RecipeInputBar from "./RecipeInputBar";
 
 const RecipeGpt = () => {
   return (
-    <div className="">
-      
-    </div>
-  )
-}
+    <div className="w-screen flex justify-center">
+      <div className="w-7xl">
+        <h1 className="pt-[200px] text-4xl font-bold">Get Your Next Delicious Recipe</h1>
+        <div className="h-screen flex flex-col items-center m-25 ">
+          {/* <img  className="absolute -z-10 object-cover object-center" src={LOGIN_BG_URL} alt="" /> */}
 
-export default RecipeGpt
+          <RecipeInputBar />
+          <RecipeContent />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RecipeGpt;

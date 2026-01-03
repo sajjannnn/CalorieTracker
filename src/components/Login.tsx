@@ -85,7 +85,7 @@ const Login = () => {
 
       </div>
       <div className="h-full w-full flex  justify-center items-center col-span-5">
-        <form className="h-full w-full p-8 flex flex-col justify-center items-center">
+        <form className=" w-[550px] h-[600px] p-8 flex flex-col justify-center items-center border shadow-2xl">
           <h1 className="w-3/5 font-bold text-2xl mb-10 md:text-5xl"> {isSignin ? "Sign In" : "Sign Up"} </h1>
           <div className="w-3/5 flex flex-col gap-4 md:gap-7">
             {!isSignin && <input className="p-3 px-4  border" ref={name} type="text" placeholder="Name" />}

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const activePage = createSlice({
   name: "activePage",
-  initialState: { page: "" },
+  initialState: { page: "/" },
   reducers: {
     setActivePage: (state, action: { payload: string }) => {
       state.page = action.payload;

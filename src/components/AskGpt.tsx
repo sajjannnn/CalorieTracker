@@ -3,13 +3,16 @@ import GptSearchBar from "./GptSearchBar";
 
 const AskGpt = () => {
   return (
-    <div className="">
-      <div className="">
+    <div className="pt-[200px] w-screen flex justify-center">
+      <div className="w-7xl">
+        <div>
         <GptSearchBar />
       </div>
       <div className="">
         <GptContent />
       </div>
+        </div>
+
     </div>
   );
 };

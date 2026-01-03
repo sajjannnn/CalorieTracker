@@ -50,9 +50,7 @@ Text: ${searchText?.current?.value || "none"}
 
       // Image + text request
       // Extract base64 data (remove data:image/...;base64, prefix if present)
-      const base64Data = uploadedImageBase64.includes(",")
-        ? uploadedImageBase64.split(",")[1]
-        : uploadedImageBase64;
+      const base64Data = uploadedImageBase64.includes(",") ? uploadedImageBase64.split(",")[1] : uploadedImageBase64;
 
       // Determine MIME type from the base64 string
       let mimeType: "image/jpeg" | "image/png" = "image/jpeg";
@@ -88,7 +86,7 @@ Text: ${searchText?.current?.value || "none"}
     setIsLoading(true);
     try {
       const chatCompletion = await getGroqChatCompletion();
-      const responseText = chatCompletion.text || "";
+      const responseText = chatCompletion.text || "Request Failed";
       const gptResult = responseText.split(",").map((m: string) => m.trim());
 
       console.log(gptResult);
@@ -132,32 +130,24 @@ Text: ${searchText?.current?.value || "none"}
   };
 
   return (
-    <div className="pt-[10%] flex flex-col text-white font-bold text-2xl">
-      <h1 className="text-black font-bold text-7xl">Welcome {user?.displayName}!</h1>
+    <div className=" flex flex-col text-white font-bold text-2xl">
+      <h1 className="mb-[40px] text-black font-bold text-5xl">Welcome {user?.displayName}!</h1>
+      
       <form className="flex justify-center m-8" onSubmit={(e) => e.preventDefault()}>
-        {" "}
+       
         <button className="text-white bg-gray-800 text-center p-4" onClick={moreOptions}>
           +
         </button>
         <input type="text" className="p-4 bg-gray-700 w-[600px]" placeholder="Check Food Nutritions" ref={searchText} />
-        <button 
-          className="py-2 px-4 bg-black disabled:opacity-50 disabled:cursor-not-allowed" 
-          onClick={handleGptSearchCLick}
-          disabled={isLoading}
-        >
+        <button className="py-2 px-4 bg-black disabled:opacity-50 disabled:cursor-not-allowed" onClick={handleGptSearchCLick} disabled={isLoading}>
           {isLoading ? "Analyzing..." : "Check Nutrition"}
         </button>
-        {open && (
-          <div
-            className="absolute flex flex-col mt-32
-                         rounded-xl bg-black
-                         p-2 z-50"
-          >
-            <button>📎 Add photos & files</button>
+      </form>
+       {open && (
+          <div  className="absolute mt-48 rounded-xl bg-black p-2 z-50">
             <input type="file" accept="image/png,image/jpeg" onChange={handleFile} />
           </div>
         )}
-      </form>
     </div>
   );
 };
