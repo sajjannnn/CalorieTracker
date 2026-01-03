@@ -56,7 +56,7 @@ const Header = () => {
           <button className="p-2 px-4 " onClick={recipeButton}>Calorie Check </button>
           <button className="p-2 px-4 " onClick={recipeButton}>Recipe </button>
           <button className="p-2 px-4  ">Contact us </button>
-
+``
           <div className="flex  font-bold text-xl">
             <button className=" p-2 px-4 rounded font-bold text-xl" onClick={handleSignOut}>
               Sign out{" "}
