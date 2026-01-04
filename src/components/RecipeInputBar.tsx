@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import ai from "../utilis/openai";
 import { useDispatch } from "react-redux";
 import { setRecipeResult } from "../utilis/recipeSlice";
-import { LOGIN_BG_URL } from "../utilis/constants";
+
 
 const RecipeInputBar = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +47,7 @@ User input: ${searchText.current?.value || ""}
 
     setIsLoading(true);
     const result = await getGeminChatCompletion()
-    const finalOutput = result?.candidates[0]?.content?.parts[0]?.text?.split("\n") || "Request Failed,try again";
+    const finalOutput = result?.candidates?.[0]?.content?.parts?.[0]?.text?.split("\n") || "Request Failed,try again";
 
     dispatch(setRecipeResult(finalOutput))
 
