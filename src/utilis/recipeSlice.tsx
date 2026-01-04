@@ -4,7 +4,7 @@ const recipeSlice = createSlice({
     name: "recipe",
     initialState: {
         recipeItems : null,
-        recipeResult : []
+        recipeResult : null as string[] | null
     },
     reducers : {
         setRecipeItems(state, actions){

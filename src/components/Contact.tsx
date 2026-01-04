@@ -7,7 +7,7 @@ const Contact = () => {
   githubData();
   return (
     <div className=" flex justify-center">
-      <div className="pt-[200px] w-7xl">
+      <div className="pt-[50px] md:pt-[200px] w-7xl">
         <div className="flex justify-center md:justify-between w-full">
           <div>
             <div className="flex items-center gap-2">

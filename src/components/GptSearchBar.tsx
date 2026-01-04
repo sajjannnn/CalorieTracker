@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addGptResult } from "../utilis/gptSlice";
 import { setImage } from "../utilis/imageSlice";
 import type { RootState } from "../utilis/appStore";
+import { FaCameraRetro } from "react-icons/fa";
 
 const GptSearchBar = () => {
   const [open, setOpen] = useState(false);
@@ -12,7 +13,7 @@ const GptSearchBar = () => {
 
   const searchText = useRef<HTMLInputElement>(null);
   const uploadedImageBase64 = useSelector((store: RootState) => store.image.image_Base64);
-  const user = useSelector((store: RootState) => store.user);
+  const username = useSelector((store: RootState) => store.user?.displayName)
 
   const getGroqChatCompletion = async () => {
     const gptQuery = `
@@ -130,22 +131,22 @@ Text: ${searchText?.current?.value || "none"}
   };
 
   return (
-    <div className=" flex flex-col text-white font-bold text-2xl">
-      <h1 className="md:mb-[40px] text-black font-bold text-2xl md:text-5xl">Welcome {user?.displayName}!</h1>
-      
-      <form className="flex justify-center m-8 text-sm" onSubmit={(e) => e.preventDefault()}>
+    <div className="flex flex-col font-bold text-2xl">
+      <h1 className="md:mb-[40px] font-bold text-2xl md:text-5xl">Welcome {username}!</h1>
+      <p className="flex text-3xl justify-center"><FaCameraRetro />Analyze Food</p>
+      <form className="flex justify-center m-8 text-sm " onSubmit={(e) => e.preventDefault()}>
        
-        <button className="text-white bg-gray-800 text-center p-4" onClick={moreOptions}>
+        <button className="text-white bg-gray-800 text-center p-4 rounded-2xl text-2xl" onClick={moreOptions}>
           +
         </button>
-        <input type="text" className="p-4 bg-gray-700 lg:w-[600px]" placeholder="Check Food Nutritions" ref={searchText} />
-        <button className="py-2 px-4 bg-black " onClick={handleGptSearchCLick} disabled={isLoading}>
+        <input type="text" className="p-4 bg-gray-700 lg:w-[600px] mx-2 rounded-2xl " placeholder="Check Food Nutritions" ref={searchText} />
+        <button className="py-2 px-4 bg-black text-white rounded-2xl md:text-2xl" onClick={handleGptSearchCLick} disabled={isLoading}>
           {isLoading ? "Analyzing..." : "Check Nutrition"}
         </button>
       </form>
        {open && (
           <div  className="absolute mt-48 rounded-xl bg-black p-2 z-50">
-            <input type="file" accept="image/png,image/jpeg" onChange={handleFile} />
+            <input className="text-white bg-gray-700" type="file" accept="image/png,image/jpeg" onChange={handleFile} />
           </div>
         )}
     </div>

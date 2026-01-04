@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import type { RootState } from "../utilis/appStore";
+import { FaMagic } from "react-icons/fa";
+import { FaBowlFood } from "react-icons/fa6";
 
 const GptCard = () => {
   const gptValue = useSelector((store: RootState) => store.gpt.gptResult);
@@ -10,11 +12,31 @@ const GptCard = () => {
       <div>
         <img className="hidden md:block h-[600px] w-[600px] object-cover " src={image_Url} alt="uploaded-image" />
       </div>
-      <div className="my-16 w-[600px]">
-        <h1 className="text-3xl font-bold">Your Meal</h1>
-        {gptValue.map((value) => {
-          return <h2 key={value} className="text-2xl pt-4">{value}</h2>;
-        })}
+      <div className="border-2 rounded-3xl">
+        <div className="h-full flex flex-col items-center justify-center p-2">
+          {gptValue && (
+            <div className="text-8xl">
+              <FaBowlFood />
+            </div>
+          )}
+          {gptValue &&
+            gptValue.map((value) => {
+              return (
+                <h2 key={value} className="text-2xl pt-4">
+                  {value}
+                </h2>
+              );
+            })}
+          {!gptValue && (
+            <div className="flex flex-col items-center justify-center h-full text-sm md:text-xl">
+              <div className="md:text-6xl text-4xl">
+                <FaMagic />
+              </div>
+              AI Analysis Results
+              <p className="text-gray-600">Upload a photo and click analyze to see nutrition details</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

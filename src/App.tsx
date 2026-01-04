@@ -7,6 +7,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import RecipeGpt from "./components/RecipeGpt";
 import Login from "./components/Login";
+import AskGpt from "./components/AskGpt";
 
 function AppLayout() {
   return (

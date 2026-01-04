@@ -4,7 +4,7 @@ const gptSlice = createSlice({
   name: "gpt",
   initialState: {
     gptSearch: false,
-    gptResult : []
+    gptResult : null as string[] | null
   },
   reducers: {
     gptSearchToggle(state) {

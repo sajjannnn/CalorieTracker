@@ -57,13 +57,20 @@ User input: ${searchText.current?.value || ""}
 
   };
   return (
-    <div className="text-white mb-15">
-      <div className="flex md:flex-none">
-        <input type="text" className="p-2 md:p-4 bg-gray-700 lg:w-[600px]" placeholder="Search Recipes..." ref={searchText} />
-        <button className="p-2 md:py-4 md:px-6 bg-black " onClick={handleReuslt} disabled={isLoading}>
-            {isLoading ? "Analyzing" : "Search"}
-        </button>
+    <div className="text-white mb-15 ">
+      <div className=" rounded-4xl p-4 py-8 border-2  border-black">
+
+        <div>
+          <div className="text-black text-3xl font-bold py-6">Your Ingredients</div>
+        <input type="text" className="p-2 md:p-4 bg-gray-700 lg:w-[600px] py-6 rounded-3xl" placeholder="Add ingredients..." ref={searchText} />
+       
+        <div className="text-gray-600 py-3 mb-8"> Start adding ingredients to generate a recipe...</div>
+        </div>
+
       </div>
+       <button className="p-2 md:py-4 md:px-6 bg-black rounded-3xl text-2xl my-6 m-3 lg:w-[600px] " onClick={handleReuslt} disabled={isLoading}>
+            {isLoading ? "Analyzing" : "Generate Healthy Recipe"}
+        </button>
     </div>
   );
 };

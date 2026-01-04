@@ -1,13 +1,9 @@
-import AskGpt from "./AskGpt";
+import AskGpt from "./AskGpt"
 
 const Body = () => {
-  
   return (
-    <div>
-      <AskGpt/>
-    </div>
+    <div><AskGpt /></div>
+  )
+}
 
-  );
-};
-
-export default Body;
+export default Body

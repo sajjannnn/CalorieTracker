@@ -7,6 +7,8 @@ import { addUser, removeUser } from "../utilis/userSlice";
 import { LOGO_URL } from "../utilis/constants";
 import { type RootState } from "../utilis/appStore";
 import { setActivePage } from "../utilis/activePage";
+import { SiCodechef } from "react-icons/si";
+import { IoMdHome } from "react-icons/io";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -59,31 +61,30 @@ const Header = () => {
     navigate("/about");
     dispatch(setActivePage("/about"));
   };
+ 
 
   return (
-    <div className="flex justify-center w-screen fixed border-b-2 bg-white shadow-xl">
+    <div className="flex justify-center w-screen md:fixed border-b-2 bg-white shadow-xl">
       <div className="w-7xl">
         <div className="md:pt-4 flex justify-between w-full text-black md:px-6 ">
           <img className="h-28 md:m-4" src={LOGO_URL} alt="" onClick={homeButton} />
           {/* <h1 className="font-serif text-6xl font-extrabold bg-white my-2 py-4 ">Food Tracker </h1> */}
           {user && (
             <div className="hidden md:block md:flex justify-between items-center gap-4 font-bold text-xl ">
-              <button className={"p-2" + (page === "/" ? " bg-black rounded text-white" : "")} onClick={homeButton}>
+              <button className={"p-2 flex" + (page === "/" ? " bg-black rounded text-white" : "")} onClick={homeButton}>
+                <IoMdHome />
                 Home{" "}
               </button>
-              {/* <button className="p-2 px-4 " onClick={recipeButton}>
-                Calorie Check{" "}
-              </button> */}
-              <button className={"p-2" + (page === "/recipe" ? " bg-black rounded text-white" : "")} onClick={recipeButton}>
+              <button className={"p-2 flex" + (page === "/recipe" ? " bg-black rounded text-white" : "")} onClick={recipeButton}>
+                <SiCodechef />
                 Recipe{" "}
               </button>
               <button className={"p-2 " + (page === "/about" ? " bg-black rounded text-white" : "")} onClick={aboutButton}>
                 About{" "}
               </button>
-              <button className={"p-2 " + (page === "/contact" ? " bg-black rounded text-white" : "")} onClick={contactButton}>
+              <button className={"p-2" + (page === "/contact" ? " bg-black rounded text-white" : "")} onClick={contactButton}>
                 Contact us{" "}
               </button>{" "}
-              
             </div>
           )}
           {user && (
@@ -97,10 +98,10 @@ const Header = () => {
             </div>
           )}
           {user && menuOpen && (
-            <div className="absolute z-30 w-screen mt-29 bg-white">
+            <div className="absolute z-30 w-screen mt-[114px] bg-white ">
               <ul className="">
                 <li
-                  className="p-4 font-bold border-b"
+                  className="p-4 font-bold border-b "
                   onClick={() => {
                     homeButton();
                     setMenuOpen(!menuOpen);
