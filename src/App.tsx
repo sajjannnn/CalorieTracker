@@ -7,6 +7,8 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import RecipeGpt from "./components/RecipeGpt";
 import Login from "./components/Login";
+import AskGpt from "./components/AskGpt";
+import AddMeal from "./components/AddMeal";
 
 function AppLayout() {
   return (
@@ -34,8 +36,8 @@ const appRouter = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/about",
-        element: <About />,
+        path: "/calorie-check",
+        element: <AskGpt />,
       },
       {
         path: "/contact",
@@ -44,6 +46,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/recipe",
         element: <RecipeGpt />,
+      },
+      {
+        path: "/add-meal",
+        element: <AddMeal />,
       },
     ],
   },

@@ -132,7 +132,7 @@ Text: ${searchText?.current?.value || "none"}
 
   return (
     <div className="flex flex-col font-bold text-2xl">
-      <h1 className="md:mb-[40px] font-bold text-2xl md:text-5xl">Welcome {username}!</h1>
+      <h1 className="md:mb-[20px] font-bold text-2xl md:text-5xl">Welcome {username}!</h1>
       <p className="flex text-3xl justify-center"><FaCameraRetro />Analyze Food</p>
       <form className="flex justify-center m-8 text-sm " onSubmit={(e) => e.preventDefault()}>
        

@@ -57,17 +57,20 @@ const Header = () => {
     navigate("/");
     dispatch(setActivePage("/"));
   };
-  const aboutButton = () => {
-    navigate("/about");
-    dispatch(setActivePage("/about"));
+  const calorieCheckButton = () => {
+    navigate("/calorie-check");
+    dispatch(setActivePage("/calorie-check"));
   };
- 
+  const addMealButton = () => {
+    navigate("/add-meal");
+    dispatch(setActivePage("/add-meal"));
+  };
 
   return (
     <div className="flex justify-center w-screen md:fixed border-b-2 bg-white shadow-xl">
       <div className="w-7xl">
-        <div className="md:pt-4 flex justify-between w-full text-black md:px-6 ">
-          <img className="h-28 md:m-4" src={LOGO_URL} alt="" onClick={homeButton} />
+        <div className=" flex justify-between w-full text-black md:px-6 ">
+          <img className="h-24 md:m-4" src={LOGO_URL} alt="" onClick={homeButton} />
           {/* <h1 className="font-serif text-6xl font-extrabold bg-white my-2 py-4 ">Food Tracker </h1> */}
           {user && (
             <div className="hidden md:block md:flex justify-between items-center gap-4 font-bold text-xl ">
@@ -75,12 +78,15 @@ const Header = () => {
                 <IoMdHome />
                 Home{" "}
               </button>
+              <button className={"p-2 " + (page === "/calorie-check" ? " bg-black rounded text-white" : "")} onClick={calorieCheckButton}>
+                Calorie Check{" "}
+              </button>
               <button className={"p-2 flex" + (page === "/recipe" ? " bg-black rounded text-white" : "")} onClick={recipeButton}>
                 <SiCodechef />
                 Recipe{" "}
-              </button>
-              <button className={"p-2 " + (page === "/about" ? " bg-black rounded text-white" : "")} onClick={aboutButton}>
-                About{" "}
+              </button>{" "}
+              <button className={"p-2 flex" + (page === "/add-meal" ? " bg-black rounded text-white" : "")} onClick={addMealButton}>
+                Add Meal{" "}
               </button>
               <button className={"p-2" + (page === "/contact" ? " bg-black rounded text-white" : "")} onClick={contactButton}>
                 Contact us{" "}
@@ -89,7 +95,7 @@ const Header = () => {
           )}
           {user && (
             <div className="flex  font-bold ">
-              <button className="hidden md:block my-8 px-3 rounded font-bold text-sm md:text-xl hover:bg-black hover:text-white" onClick={handleSignOut}>
+              <button className="hidden md:block my-8  px-3 rounded font-bold text-sm md:text-xl hover:bg-black hover:text-white" onClick={handleSignOut}>
                 ➜] Sign out{" "}
               </button>
               <button className="md:hidden text-3xl mr-2" onClick={() => setMenuOpen(!menuOpen)}>
@@ -123,12 +129,12 @@ const Header = () => {
                 <li
                   className="p-4 font-bold border-b"
                   onClick={() => {
-                    aboutButton();
+                    calorieCheckButton();
                     setMenuOpen(!menuOpen);
                   }}
                 >
                   {" "}
-                  About{" "}
+                  Calorie Check{" "}
                 </li>
                 <li
                   className="p-4 font-bold border-b"

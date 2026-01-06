@@ -3,7 +3,7 @@ import GptSearchBar from "./GptSearchBar";
 
 const AskGpt = () => {
   return (
-    <div className="pt-[50px] md:pt-[200px] w-screen flex justify-center">
+    <div className="pt-[50px] md:pt-[170px] w-screen flex justify-center">
       <div className="w-screen lg:w-7xl">
         <div>
         <GptSearchBar />

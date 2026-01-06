@@ -1,8 +1,8 @@
-import AskGpt from "./AskGpt"
+import Home from "./Home"
 
 const Body = () => {
   return (
-    <div><AskGpt /></div>
+    <div><Home /></div>
   )
 }
 
