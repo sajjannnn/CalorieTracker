@@ -7,7 +7,6 @@ interface CalorieRingProps {
 
 export function CalorieRing({ consumed, goal }: CalorieRingProps) {
   const percentage = Math.min((consumed / goal) * 100, 100);
-  const remaining = Math.max(goal - consumed, 0);
 
   // SVG circle properties
   const size = 200;

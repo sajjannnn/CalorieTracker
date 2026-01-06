@@ -90,7 +90,6 @@ Text: ${searchText?.current?.value || "none"}
       const responseText = chatCompletion.text || "Request Failed";
       const gptResult = responseText.split(",").map((m: string) => m.trim());
 
-      console.log(gptResult);
       dispatch(addGptResult(gptResult));
     } catch (error) {
       console.error("Error processing request:", error);

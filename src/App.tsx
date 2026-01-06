@@ -3,7 +3,6 @@ import Body from "./components/Body";
 import appStore from "./utilis/appStore";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Header from "./components/Header";
-import About from "./components/About";
 import Contact from "./components/Contact";
 import RecipeGpt from "./components/RecipeGpt";
 import Login from "./components/Login";

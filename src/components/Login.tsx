@@ -30,8 +30,7 @@ const Login = () => {
     para3 = name.current?.value ?? "";
 
     setMessage(validator(para1, para2));
-    // console.log(email.current?.value);
-    // console.log(password.current?.value);
+   
     if (message) return;
 
     if (!isSignin) {
@@ -39,7 +38,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user);
           updateProfile(user, {
             displayName: para3,
             photoURL: USER_AVATAR,

@@ -15,10 +15,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const page = useSelector((store: RootState) => store.activePage.page);
   const [menuOpen, setMenuOpen] = useState(false);
-  // const address = () =>{
-  //   console.log("clicked");
-  // }
-
+ 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {

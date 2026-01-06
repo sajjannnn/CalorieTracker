@@ -1,10 +1,5 @@
 const Contact = () => {
-  const githubData = async () => {
-    const res = await fetch("https://github.com/sajjannnn");
-    const data = await res.json();
-    console.log(data);
-  };
-  githubData();
+ 
   return (
     <div className=" flex justify-center">
       <div className="pt-[50px] md:pt-[200px] w-7xl">

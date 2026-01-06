@@ -24,8 +24,6 @@ const AddMeal = () => {
     const protein = Number(formData.get("protein"));
     const carbs = Number(formData.get("carbs"));
     const fats = Number(formData.get("fats"));
-    console.log(calories);
-    console.log(data);
     const updatedData = {
       ...data,
       consumed: data.consumed + calories,
