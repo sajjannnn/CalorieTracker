@@ -62,13 +62,13 @@ User input: ${searchText.current?.value || ""}
 
         <div>
           <div className="text-black text-3xl font-bold py-6">Your Ingredients</div>
-        <input type="text" className="p-2 md:p-4 bg-gray-700 lg:w-[600px] py-6 rounded-3xl" placeholder="Add ingredients..." ref={searchText} />
+        <input type="text" className="p-2 md:p-4 bg-gray-700 w-full py-6 rounded-3xl" placeholder="Add ingredients..." ref={searchText} />
        
         <div className="text-gray-600 py-3 mb-8"> Start adding ingredients to generate a recipe...</div>
         </div>
 
       </div>
-       <button className="p-2 md:py-4 md:px-6 bg-black rounded-3xl text-2xl my-6 m-3 lg:w-[600px] " onClick={handleReuslt} disabled={isLoading}>
+       <button className="p-2 md:py-4 md:px-6 bg-black rounded-3xl text-2xl my-6 w-full " onClick={handleReuslt} disabled={isLoading}>
             {isLoading ? "Analyzing" : "Generate Healthy Recipe"}
         </button>
     </div>

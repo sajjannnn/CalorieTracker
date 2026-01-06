@@ -4,6 +4,7 @@ import gptReducer from "./gptSlice"
 import imageReducer from "./imageSlice"
 import activePageReducer from "./activePage"
 import recipeReducer from "./recipeSlice"
+import mealReducer from "./mealSlice"
 
 const appStore = configureStore({
     reducer : {
@@ -12,6 +13,7 @@ const appStore = configureStore({
         image : imageReducer,
         activePage : activePageReducer,
         recipe : recipeReducer,
+        meal : mealReducer,
 
 
     },

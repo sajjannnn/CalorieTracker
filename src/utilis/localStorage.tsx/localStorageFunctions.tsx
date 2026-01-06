@@ -1,7 +1,7 @@
-import type { NutriTrackData, Meal} from "./types";
+import type { NutriTrackData } from "./types";
 import { initialNutriData } from "./types";
 
-const STORAGE_KEY = "nutriTrackData";
+export const STORAGE_KEY = "nutriTrackData";
 
 /** Get stored data */
 export const getNutriData = (): NutriTrackData => {
@@ -10,19 +10,10 @@ export const getNutriData = (): NutriTrackData => {
 };
 
 /** Save data */
-const saveNutriData = (data: NutriTrackData): void => {
+export const saveNutriData = (data: NutriTrackData): void => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 };
 
-/** Add meal */
-export const addMeal = (meal: Meal): void => {
-  const data = getNutriData();
-
-  data.meals.push(meal);
-  data.consumed += meal.calories;
-  data.macros.protein += meal.protein ?? 0;
-  data.macros.carbs += meal.carbs ?? 0;
-  data.macros.fats += meal.fats ?? 0;
-
-  saveNutriData(data);
+export const clearData = () => {
+  localStorage.clear();
 };

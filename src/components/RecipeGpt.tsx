@@ -11,7 +11,7 @@ const RecipeGpt = () => {
           <h1>Recipe Generator </h1>
         </div>
         <p className="m-3 text-gray-600 text-sm md:text-xl">Tell us what ingredients you have, and we'll suggest healthy recipes.</p>
-        <div className="h-screen md:grid grid-cols-2 m-2 md:mt-25 ">
+        <div className="h-screen md:grid grid-cols-2 m-2 md:mt-15 ">
           {/* <img  className="absolute -z-10 object-cover object-center" src={LOGIN_BG_URL} alt="" /> */}
           <div className="col-span-1">
             <RecipeInputBar />

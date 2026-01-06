@@ -8,9 +8,9 @@ const GptCard = () => {
   const image_Url = useSelector((store: RootState) => store.image.image_Url);
 
   return (
-    <div className="mt-10 flex justify-between">
+    <div className="mt-10 flex justify-evenly ">
       <div>
-        <img className="hidden md:block h-[600px] w-[600px] object-cover " src={image_Url} alt="uploaded-image" />
+        <img className="hidden md:block h-[400px] w-[400px] object-cover " src={image_Url} alt="uploaded-image" />
       </div>
       <div className="border-2 rounded-3xl">
         <div className="h-full flex flex-col items-center justify-center p-2">

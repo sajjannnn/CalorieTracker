@@ -8,7 +8,7 @@ const AskGpt = () => {
         <div>
         <GptSearchBar />
       </div>
-      <div className="">
+      <div className="mx-16 ">
       <GptCard />
       </div>
         </div>

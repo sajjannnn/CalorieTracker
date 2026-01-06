@@ -104,7 +104,7 @@ const Header = () => {
             </div>
           )}
           {user && menuOpen && (
-            <div className="absolute z-30 w-screen mt-[114px] bg-white ">
+            <div className="absolute z-30 w-screen mt-[100px] bg-white ">
               <ul className="">
                 <li
                   className="p-4 font-bold border-b "
@@ -135,6 +135,16 @@ const Header = () => {
                 >
                   {" "}
                   Calorie Check{" "}
+                </li>
+                <li
+                  className="p-4 font-bold border-b"
+                  onClick={() => {
+                    addMealButton();
+                    setMenuOpen(!menuOpen);
+                  }}
+                >
+                  {" "}
+                  Add Meal{" "}
                 </li>
                 <li
                   className="p-4 font-bold border-b"

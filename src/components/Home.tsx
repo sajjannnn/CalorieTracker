@@ -7,12 +7,13 @@ import History from "./History";
 import MacroNutrients from "./MacroNutrients";
 import { useNavigate } from "react-router-dom";
 import { setActivePage } from "../utilis/activePage";
-import { getNutriData } from "../utilis/localStorage.tsx/localStorageFunctions";
+import { CalorieRing } from "./PieCharts";
 
 const Home = () => {
   const displayName = useSelector((store: RootState) => store?.user?.displayName);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const data = useSelector((store: RootState) => store.meal.data);
 
   const navToRecipe = () => {
     navigate("/recipe");
@@ -22,32 +23,40 @@ const Home = () => {
     navigate("/calorie-check");
     dispatch(setActivePage("/calorie-check"));
   };
+  const navToaddMeal = () => {
+    navigate("/add-meal");
+    dispatch(setActivePage("/add-meal"));
+  };
 
   return (
-    <div className="pt-[8%] flex justify-center">
+    <div className="md:pt-[150px] flex justify-center px-4">
       <div className="w-7xl h-full">
         <div className="text-4xl ">Welcome {displayName}</div>
         <div className="text-gray-600">Track your nutrition and stay healthy today.</div>
-        <div className="grid grid-cols-12">
-          <div className="col-span-8 border-2 shadow-2xl rounded-lg p-6 m-4">
+        <div className="md:grid grid-cols-12 ">
+          <div className="col-span-8 border-2 rounded-3xl p-6 m-4">
             <div className="flex">
-              <div>chart</div>
+              <div className="md:mx-4">
+                <CalorieRing consumed={data.consumed} goal={data.dailyGoal} />
+              </div>
               <div className=" w-full ">
                 <div className="border-b border-gray-500 text-2xl mb-4 ">
-                  <p className="text-sm text-gray-500">Daily Goal</p> {getNutriData().dailyGoal} kcal
+                  <p className="text-sm text-gray-500">Daily Goal</p> {data.dailyGoal} kcal
                 </div>
                 <div className="border-b border-gray-500 text-2xl mb-4">
                   {" "}
-                  <p className="text-sm text-gray-500">Remaining</p>{getNutriData().dailyGoal - getNutriData().consumed} kcal
+                  <p className="text-sm text-gray-500">Remaining</p>
+                  {data.dailyGoal - data.consumed} kcal
                 </div>
                 <div className="border-b border-gray-500 text-2xl ">
                   {" "}
-                  <p className="text-sm text-gray-500">Progress</p>{ Math.floor(getNutriData().consumed / getNutriData().dailyGoal *100)}
+                  <p className="text-sm text-gray-500">Progress</p>
+                  {Math.floor((data.consumed / data.dailyGoal) * 100)}
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-span-4 border-2 shadow-2xl rounded-3xl p-2">
+          <div className="col-span-4 flex flex-col justify-evenly border-2 rounded-3xl p-2">
             <div className="flex items-center text-4xl border rounded-2xl m-2 p-1 gap-2 cursor-pointer" onClick={navToScan}>
               <MdOutlineCamera />
               <div>
@@ -62,10 +71,13 @@ const Home = () => {
                 <p className=" text-xs text-gray-600">From ingredients</p>
               </div>
             </div>
-            <div className="flex items-center text-4xl border rounded-2xl m-2 p-1 gap-2">
+            <div className="flex items-center text-4xl border rounded-2xl m-2 p-1 gap-2 cursor-pointer" onClick={navToaddMeal}>
               <GoPlus />
               <div>
-                <div className="text-lg"> Log Manually</div>
+                <div className="text-lg " >
+                  {" "}
+                  Log Manually
+                </div>
                 <p className=" text-xs text-gray-600">Add meal entry</p>
               </div>
             </div>
