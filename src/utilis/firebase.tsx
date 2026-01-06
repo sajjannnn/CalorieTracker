@@ -14,11 +14,11 @@ const firebaseConfig = {
   storageBucket: "calorietracker-5596a.firebasestorage.app",
   messagingSenderId: "118776004486",
   appId: "1:118776004486:web:d1cb049af3eade2839b607",
-  measurementId: "G-MPSKKZYFFM"
+  measurementId: "G-MPSKKZYFFM",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export const analytics = getAnalytics(app);
 
 export const auth = getAuth();
