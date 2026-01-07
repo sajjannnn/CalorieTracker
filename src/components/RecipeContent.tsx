@@ -5,10 +5,10 @@ import { FaBowlFood } from "react-icons/fa6";
 const RecipeContent = () => {
   const content = useSelector((store: RootState) => store.recipe.recipeResult);
   return (
-    <div className="border-2 border-black rounded-3xl mx-4 ">
-      <div className="flex flex-col h-full justify-center min-h-[380px] items-center text-center">
+    <div className="border-2 border-gray-300 rounded-3xl mx-4 bg-white ">
+      <div className="flex flex-col h-full justify-center min-h-[380px] items-center text-center ">
         <p className="text-8xl flex justify-center">
-              <FaBowlFood />
+              <FaBowlFood  className="text-gray-900"/>
             </p>
         {!content && (
           <div>

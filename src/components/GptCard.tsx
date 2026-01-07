@@ -12,7 +12,7 @@ const GptCard = () => {
       <div>
         <img className="hidden md:block h-[400px] w-[400px] object-cover " src={image_Url} alt="uploaded-image" />
       </div>
-      <div className="border-2 rounded-3xl">
+      <div className="border-2 rounded-3xl bg-white">
         <div className="h-full flex flex-col items-center justify-center p-2">
           {gptValue && (
             <div className="text-8xl">

@@ -67,35 +67,35 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-center w-screen md:fixed h-[100px] border-b-2 bg-white">
+    <div className="flex justify-center w-screen md:fixed h-[100px] border-b-2 border-gray-400 bg-white">
       <div className="w-7xl">
-        <div className=" flex justify-between items-center w-full text-black md:px-6 ">
-          <img className="h-20 " src={LOGO_URL} alt="" onClick={homeButton} />
+        <div className=" flex justify-between items-center w-full text-gray-700  md:px-6 ">
+          <img className="h-20" src={LOGO_URL} alt="" onClick={homeButton} />
           {/* <h1 className="font-serif text-6xl font-extrabold bg-white my-2 py-4 ">Food Tracker </h1> */}
           {user && (
-            <div className="hidden md:block md:flex justify-between items-center gap-4 font-bold text-xl ">
-              <button className={"p-2 flex items-center" + (page === "/" ? " bg-black rounded text-white" : "")} onClick={homeButton}>
+            <div className="hidden md:block md:flex justify-between items-center gap-4 text-xl ">
+              <button className={" p-2 flex items-center" + (page === "/" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={homeButton}>
                 <IoMdHome />
                 Home{" "}
               </button>
-              <button className={"p-2 flex items-center" + (page === "/calorie-check" ? " bg-black rounded text-white" : "")} onClick={calorieCheckButton}>
+              <button className={"hover:bg-[#f8f7f3] p-2 flex items-center" + (page === "/calorie-check" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={calorieCheckButton}>
               <IoAddSharp />  Calorie Check{" "}
               </button>
-              <button className={"p-2 flex items-center" + (page === "/recipe" ? " bg-black rounded text-white" : "")} onClick={recipeButton}>
+              <button className={"hover:bg-[#f8f7f3] p-2 flex items-center" + (page === "/recipe" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={recipeButton}>
                 <LuChefHat />
                 Recipe{" "}
               </button>{" "}
-              <button className={"p-2 flex items-center" + (page === "/add-meal" ? " bg-black rounded text-white" : "")} onClick={addMealButton}>
+              <button className={"hover:bg-[#f8f7f3] p-2 flex items-center" + (page === "/add-meal" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={addMealButton}>
               <GiMeal />  Add Meal{" "}
               </button>
-              <button className={"p-2 flex items-center" + (page === "/contact" ? " bg-black rounded text-white" : "")} onClick={contactButton}>
+              <button className={"hover:bg-[#f8f7f3] p-2 flex items-center" + (page === "/contact" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={contactButton}>
               <IoIosCall />  Contact us{" "}
               </button>{" "}
             </div>
           )}
           {user && (
-            <div className="flex  font-bold ">
-              <button className="hidden md:block my-10  px-3 rounded font-bold text-sm md:text-xl hover:bg-black hover:text-white" onClick={handleSignOut}>
+            <div className="flex  ">
+              <button className="hidden md:block my-8 px-3 py-1 rounded text-sm md:text-xl hover:bg-green-500 hover:text-white" onClick={handleSignOut}>
                 ➜] Sign out{" "}
               </button>
               <button className="md:hidden text-3xl mr-2" onClick={() => setMenuOpen(!menuOpen)}>

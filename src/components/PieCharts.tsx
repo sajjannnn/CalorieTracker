@@ -25,7 +25,7 @@ return(
 
     {/* Center content */}
     <div className="absolute inset-0 flex flex-col items-center justify-center">
-      <Flame className="w-6 h-6 text-accent mb-1" />
+      <Flame className="w-6 h-6 text-accent mb-1 text-orange-400" />
       <span className="font-display text-3xl font-bold text-foreground">{consumed.toLocaleString()}</span>
       <span className="text-sm text-muted-foreground">kcal consumed</span>
     </div>

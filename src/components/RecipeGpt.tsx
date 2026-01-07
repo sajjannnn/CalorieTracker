@@ -4,7 +4,7 @@ import { SiCodechef } from "react-icons/si";
 
 const RecipeGpt = () => {
   return (
-    <div className="w-screen flex justify-center">
+    <div className="w-screen flex justify-center bg-[#f8f7f3]">
       <div className="w-screen lg:w-7xl">
         <div className=" pt-[50px] md:pt-[200px] text-2xl text-4xl md:text-6xl flex font-bold">
           <SiCodechef />

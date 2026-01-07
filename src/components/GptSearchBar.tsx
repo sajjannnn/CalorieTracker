@@ -130,16 +130,16 @@ Text: ${searchText?.current?.value || "none"}
   };
 
   return (
-    <div className="flex flex-col font-bold text-2xl">
-      <h1 className="md:mb-[20px] font-bold text-2xl md:text-5xl">Welcome {username}!</h1>
+    <div className="flex flex-col font-bold items-center text-2xl  ">
+      <h1 className="md:mb-[20px] font-bold text-2xl w-full md:text-5xl">Welcome {username}!</h1>
       <p className="flex text-3xl justify-center"><FaCameraRetro />Analyze Food</p>
-      <form className="flex justify-center m-8 text-sm " onSubmit={(e) => e.preventDefault()}>
+      <form className="max-w-5xl flex justify-between px-4 m-8 text-sm border border-gray-300 rounded-3xl py-4 bg-white" onSubmit={(e) => e.preventDefault()}>
        
-        <button className="text-white bg-gray-800 text-center p-4 rounded-2xl text-2xl" onClick={moreOptions}>
+        <button className="text-gray-400 bg-[#f7f7ec] text-center px-4 rounded-2xl text-2xl" onClick={moreOptions}>
           +
         </button>
-        <input type="text" className="p-4 bg-gray-700 lg:w-[600px] mx-2 rounded-2xl " placeholder="Check Food Nutritions" ref={searchText} />
-        <button className="py-2 px-4 bg-black text-white rounded-2xl md:text-2xl" onClick={handleGptSearchCLick} disabled={isLoading}>
+        <input type="text" className="p-4 bg-[#f8f7f3] border-gray-300 lg:w-[600px] mx-2 rounded-2xl " placeholder="Check Food Nutritions" ref={searchText} />
+        <button className="py-2 px-4 bg-green-500 hover:bg-green-400 text-white rounded-2xl md:text-2xl" onClick={handleGptSearchCLick} disabled={isLoading}>
           {isLoading ? "Analyzing..." : "Check Nutrition"}
         </button>
       </form>

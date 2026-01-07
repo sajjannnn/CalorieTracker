@@ -42,39 +42,39 @@ const AddMeal = () => {
     navigate("/");
   };
   return (
-    <div className="md:pt-[150px] flex justify-center">
+    <div className="md:pt-[150px] flex justify-center bg-[#f8f7f3] h-screen">
       <div className="lg:w-7xl flex flex-col items-center ">
         <div className="text-bold text-4xl my-3">Add Meal</div>
         <p className="text-gray-500">Log your meal manually to track your daily intake</p>
-        <div className="w-2/3 border rounded-2xl p-6 mt-6">
+        <div className="w-2/3 border border-gray-300 rounded-2xl p-6 mt-6 bg-white">
           <form className="space-y-6" ref={fromRef} onSubmit={addMeal}>
             <div className="flex flex-col">
               <label htmlFor="mealName"> Food Name </label>
-              <input className="border rounded-2xl border-gray-600 py-2 px-4" type="text" name="mealName" id="mealName" required placeholder="e.g., Grilled Chicken" />
+              <input className="border rounded-2xl  border-gray-300 bg-[#f8f7f3] py-2 px-4" type="text" name="mealName" id="mealName" required placeholder="e.g., Grilled Chicken" />
             </div>
             <div className="flex flex-col">
               <label htmlFor="calories"> Calories </label>
-              <input className="border rounded-2xl border-gray-600 py-2 px-4" type="number" name="calories" id="calories" required placeholder="e.g., 350" />
+              <input className="border rounded-2xl border-gray-300 bg-[#f8f7f3] py-2 px-4" type="number" name="calories" id="calories" required placeholder="e.g., 350" />
             </div>
             <div className="flex flex-col">
               <label htmlFor="mealType"> Meal Type </label>
-              <input className="border rounded-2xl border-gray-600 py-2 px-4" type="text" name="mealType" id="mealType" required placeholder="e.g., Breakfast, Lunch, Dinner" />
+              <input className="border rounded-2xl border-gray-300 bg-[#f8f7f3] py-2 px-4" type="text" name="mealType" id="mealType" required placeholder="e.g., Breakfast, Lunch, Dinner" />
             </div>
             <div className="flex justify-between flex-wrap">
               <div className="flex flex-col">
                 <label htmlFor="protein"> Protein </label>
-                <input className="border rounded-2xl border-gray-600 py-2 px-2" type="number" name="protein" id="protein" required placeholder="0" />
+                <input className="border rounded-2xl border-gray-300 bg-[#f8f7f3] py-2 px-2" type="number" name="protein" id="protein" required placeholder="0" />
               </div>
               <div className="flex flex-col">
                 <label htmlFor="carbs"> Carbs(g) </label>
-                <input className="border rounded-2xl border-gray-600 py-2 px-2" type="number" name="carbs" id="carbs" required placeholder="0" />
+                <input className="border rounded-2xl border-gray-300 bg-[#f8f7f3] py-2 px-2" type="number" name="carbs" id="carbs" required placeholder="0" />
               </div>
               <div className="flex flex-col">
                 <label htmlFor="fats"> Fats(g) </label>
-                <input className="border rounded-2xl border-gray-600 py-2 px-2" type="number" name="fats" id="fats" required placeholder="0" />
+                <input className="border rounded-2xl border-gray-300 bg-[#f8f7f3] py-2 px-2" type="number" name="fats" id="fats" required placeholder="0" />
               </div>
             </div>
-            <button className="bg-gray-600 text-white rounded-2xl p-3 w-full" type="submit">
+            <button className="bg-green-500 hover:bg-green-400 text-white rounded-2xl p-3 w-full" type="submit">
               Add Meal
             </button>
           </form>

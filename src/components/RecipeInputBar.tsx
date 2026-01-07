@@ -58,17 +58,17 @@ User input: ${searchText.current?.value || ""}
   };
   return (
     <div className="text-white mb-15 ">
-      <div className=" rounded-4xl p-4 py-8 border-2  border-black">
+      <div className=" rounded-4xl p-4 py-8 border-2  border-gray-300 bg-white">
 
-        <div>
+        <div className="">
           <div className="text-black text-3xl font-bold py-6">Your Ingredients</div>
-        <input type="text" className="p-2 md:p-4 bg-gray-700 w-full py-6 rounded-3xl" placeholder="Add ingredients..." ref={searchText} />
+        <input type="text" className="p-2 md:p-4 bg-[#f8f7f3] border-2 border-gray-300 text-gray-600 w-full py-6 rounded-3xl" placeholder="Add ingredients..." ref={searchText} />
        
         <div className="text-gray-600 py-3 mb-8"> Start adding ingredients to generate a recipe...</div>
         </div>
 
       </div>
-       <button className="p-2 md:py-4 md:px-6 bg-black rounded-3xl text-2xl my-6 w-full " onClick={handleReuslt} disabled={isLoading}>
+       <button className="p-2 md:py-4 md:px-6 bg-green-500 hover:bg-green-400 rounded-3xl text-2xl my-6 w-full " onClick={handleReuslt} disabled={isLoading}>
             {isLoading ? "Analyzing" : "Generate Healthy Recipe"}
         </button>
     </div>

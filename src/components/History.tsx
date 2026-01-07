@@ -11,7 +11,7 @@ const dispatch = useDispatch();
       <div className="flex justify-between items-center">
         <div className="font-bold text-2xl my-5">Today's Meal</div>
         <button
-          className="p-2 bg-gray-600 rounded-2xl text-white"
+          className="p-2 bg-green-500 hover:shadow-2xl font-bold text-xl rounded-2xl text-white"
           onClick={() => dispatch(clearMeal())}
         >
           Reset Day
@@ -20,17 +20,17 @@ const dispatch = useDispatch();
 
       {data.meals.length === 0 && <div className="">No meals logged yet!</div>}
       {data.meals.map((meal, index) => (
-        <div key={index} className="flex justify-between border rounded-2xl p-4 mb-4">
+        <div key={index} className="flex justify-between border hover:shadow-2xl border-gray-200 rounded-2xl p-4 mb-4 bg-white">
           <div className="flex items-center text-4xl gap-2">
             {" "}
-            <GiMeal />
+            <GiMeal className=" text-gray-800 bg-[#fbfcf0] m-2"/>
             <div className="text-lg">
               {meal.name}
               <p className="text-gray-600 text-sm">{meal.type}</p>
             </div>
           </div>
           <p className="flex items-center">
-            <SlEnergy />
+            <SlEnergy className="text-orange-500 text-2xl"/>
             {meal.calories}
           </p>
         </div>
