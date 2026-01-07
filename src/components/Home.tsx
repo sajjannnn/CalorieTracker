@@ -34,9 +34,9 @@ const Home = () => {
         <div className="text-4xl ">Welcome {displayName}</div>
         <div className="text-gray-600">Track your nutrition and stay healthy today.</div>
         <div className="md:grid grid-cols-12 ">
-          <div className="col-span-8 border-2 border-gray-200 rounded-3xl p-6 m-4 ml-0 bg-white">
+          <div className="col-span-8 border-2 border-gray-200 rounded-3xl p-6 m-4 md:ml-0 bg-white">
             <div className="flex">
-              <div className="md:mx-4">
+              <div className="md:mx-4 mr-4">
                 <CalorieRing consumed={data.consumed} goal={data.dailyGoal} />
               </div>
               <div className=" w-full ">

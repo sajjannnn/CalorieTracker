@@ -73,7 +73,7 @@ const Header = () => {
           <img className="h-20" src={LOGO_URL} alt="" onClick={homeButton} />
           {/* <h1 className="font-serif text-6xl font-extrabold bg-white my-2 py-4 ">Food Tracker </h1> */}
           {user && (
-            <div className="hidden md:block md:flex justify-between items-center gap-4 text-xl ">
+            <div className="hidden lg:block lg:flex justify-between items-center gap-4 text-xl ">
               <button className={" p-2 flex items-center" + (page === "/" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={homeButton}>
                 <IoMdHome />
                 Home{" "}
@@ -95,10 +95,10 @@ const Header = () => {
           )}
           {user && (
             <div className="flex  ">
-              <button className="hidden md:block my-8 px-3 py-1 rounded text-sm md:text-xl hover:bg-green-500 hover:text-white" onClick={handleSignOut}>
+              <button className="hidden lg:block my-8 px-3 py-1 rounded text-sm md:text-xl hover:bg-green-500 hover:text-white" onClick={handleSignOut}>
                 ➜] Sign out{" "}
               </button>
-              <button className="md:hidden text-3xl mr-2" onClick={() => setMenuOpen(!menuOpen)}>
+              <button className="lg:hidden text-3xl mr-2" onClick={() => setMenuOpen(!menuOpen)}>
                 ☰
               </button>
             </div>
