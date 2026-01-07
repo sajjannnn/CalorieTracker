@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialNutriData, type NutriTrackData } from "./localStorage.tsx/types";
+import { getNutriData } from "./localStorage.tsx/localStorageFunctions";
 
 const mealSlice = createSlice({
   name: "meal",
   initialState: {
-    data: initialNutriData as NutriTrackData,
+    data: getNutriData() as NutriTrackData,
   },
   reducers: {
     clearMeal(state) {

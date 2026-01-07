@@ -4,11 +4,13 @@ import type { Meal } from "../utilis/localStorage.tsx/types";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../utilis/appStore";
 import { setMeal } from "../utilis/mealSlice";
+import { useNavigate } from "react-router-dom";
 
 const AddMeal = () => {
   const fromRef = useRef<HTMLFormElement>(null);
   const data = useSelector((store: RootState) => store.meal.data);
   const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   const addMeal = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,6 +39,7 @@ const AddMeal = () => {
 
     saveNutriData(updatedData);
     dispatch(setMeal(updatedData));
+    navigate("/");
   };
   return (
     <div className="md:pt-[150px] flex justify-center">

@@ -9,6 +9,11 @@ import { type RootState } from "../utilis/appStore";
 import { setActivePage } from "../utilis/activePage";
 import { SiCodechef } from "react-icons/si";
 import { IoMdHome } from "react-icons/io";
+import { CiCalculator1 } from "react-icons/ci";
+import { IoIosCall } from "react-icons/io";
+import { GiMeal } from "react-icons/gi";
+import { IoAddSharp } from "react-icons/io5";
+import { LuChefHat } from "react-icons/lu";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -64,35 +69,35 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-center w-screen md:fixed border-b-2 bg-white shadow-xl">
+    <div className="flex justify-center w-screen md:fixed h-[100px] border-b-2 bg-white">
       <div className="w-7xl">
-        <div className=" flex justify-between w-full text-black md:px-6 ">
-          <img className="h-24 md:m-4" src={LOGO_URL} alt="" onClick={homeButton} />
+        <div className=" flex justify-between items-center w-full text-black md:px-6 ">
+          <img className="h-20 " src={LOGO_URL} alt="" onClick={homeButton} />
           {/* <h1 className="font-serif text-6xl font-extrabold bg-white my-2 py-4 ">Food Tracker </h1> */}
           {user && (
             <div className="hidden md:block md:flex justify-between items-center gap-4 font-bold text-xl ">
-              <button className={"p-2 flex" + (page === "/" ? " bg-black rounded text-white" : "")} onClick={homeButton}>
+              <button className={"p-2 flex items-center" + (page === "/" ? " bg-black rounded text-white" : "")} onClick={homeButton}>
                 <IoMdHome />
                 Home{" "}
               </button>
-              <button className={"p-2 " + (page === "/calorie-check" ? " bg-black rounded text-white" : "")} onClick={calorieCheckButton}>
-                Calorie Check{" "}
+              <button className={"p-2 flex items-center" + (page === "/calorie-check" ? " bg-black rounded text-white" : "")} onClick={calorieCheckButton}>
+              <IoAddSharp />  Calorie Check{" "}
               </button>
-              <button className={"p-2 flex" + (page === "/recipe" ? " bg-black rounded text-white" : "")} onClick={recipeButton}>
-                <SiCodechef />
+              <button className={"p-2 flex items-center" + (page === "/recipe" ? " bg-black rounded text-white" : "")} onClick={recipeButton}>
+                <LuChefHat />
                 Recipe{" "}
               </button>{" "}
-              <button className={"p-2 flex" + (page === "/add-meal" ? " bg-black rounded text-white" : "")} onClick={addMealButton}>
-                Add Meal{" "}
+              <button className={"p-2 flex items-center" + (page === "/add-meal" ? " bg-black rounded text-white" : "")} onClick={addMealButton}>
+              <GiMeal />  Add Meal{" "}
               </button>
-              <button className={"p-2" + (page === "/contact" ? " bg-black rounded text-white" : "")} onClick={contactButton}>
-                Contact us{" "}
+              <button className={"p-2 flex items-center" + (page === "/contact" ? " bg-black rounded text-white" : "")} onClick={contactButton}>
+              <IoIosCall />  Contact us{" "}
               </button>{" "}
             </div>
           )}
           {user && (
             <div className="flex  font-bold ">
-              <button className="hidden md:block my-8  px-3 rounded font-bold text-sm md:text-xl hover:bg-black hover:text-white" onClick={handleSignOut}>
+              <button className="hidden md:block my-10  px-3 rounded font-bold text-sm md:text-xl hover:bg-black hover:text-white" onClick={handleSignOut}>
                 ➜] Sign out{" "}
               </button>
               <button className="md:hidden text-3xl mr-2" onClick={() => setMenuOpen(!menuOpen)}>
