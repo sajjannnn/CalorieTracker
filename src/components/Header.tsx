@@ -18,7 +18,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const page = useSelector((store: RootState) => store.activePage.page);
   const [menuOpen, setMenuOpen] = useState(false);
- 
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -78,18 +78,18 @@ const Header = () => {
                 <IoMdHome />
                 Home{" "}
               </button>
-              <button className={"hover:bg-[#f8f7f3] p-2 flex items-center" + (page === "/calorie-check" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={calorieCheckButton}>
-              <IoAddSharp />  Calorie Check{" "}
+              <button className={" p-2 flex items-center justify-center" + (page === "/calorie-check" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={calorieCheckButton}>
+                <IoAddSharp /> Calorie Check{" "}
               </button>
-              <button className={"hover:bg-[#f8f7f3] p-2 flex items-center" + (page === "/recipe" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={recipeButton}>
+              <button className={" p-2 flex items-center justify-center" + (page === "/recipe" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={recipeButton}>
                 <LuChefHat />
                 Recipe{" "}
               </button>{" "}
-              <button className={"hover:bg-[#f8f7f3] p-2 flex items-center" + (page === "/add-meal" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={addMealButton}>
-              <GiMeal />  Add Meal{" "}
+              <button className={"p-2 flex items-center justify-center" + (page === "/add-meal" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={addMealButton}>
+                <GiMeal /> Add Meal{" "}
               </button>
-              <button className={"hover:bg-[#f8f7f3] p-2 flex items-center" + (page === "/contact" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={contactButton}>
-              <IoIosCall />  Contact us{" "}
+              <button className={"p-2 flex items-center justify-center" + (page === "/contact" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={contactButton}>
+                <IoIosCall /> Contact us{" "}
               </button>{" "}
             </div>
           )}
