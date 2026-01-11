@@ -138,16 +138,17 @@ Text: ${searchText?.current?.value || "none"}
         <button className="text-gray-400 bg-[#f7f7ec] text-center px-4 rounded-2xl text-2xl" onClick={moreOptions}>
           +
         </button>
+         {open && (
+          <div  className="absolute mt-10 -ml-3 border-gray-300 border-2 rounded bg-black z-50">
+            <input className="text-gray-500 bg-[#f8f7f3]" type="file" accept="image/png,image/jpeg" onChange={handleFile} />
+          </div>
+        )}
         <input type="text" className="p-4 bg-[#f8f7f3] border-gray-300 lg:w-[600px] mx-2 rounded-2xl " placeholder="Check Food Nutritions" ref={searchText} />
         <button className="py-2 px-4 bg-green-500 hover:bg-green-400 text-white rounded-2xl md:text-2xl" onClick={handleGptSearchCLick} disabled={isLoading}>
           {isLoading ? "Analyzing..." : "Check Nutrition"}
         </button>
       </form>
-       {open && (
-          <div  className="absolute mt-48 rounded-xl bg-black p-2 z-50">
-            <input className="text-white bg-gray-700" type="file" accept="image/png,image/jpeg" onChange={handleFile} />
-          </div>
-        )}
+      
     </div>
   );
 };
