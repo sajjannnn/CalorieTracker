@@ -103,73 +103,73 @@ const Header = () => {
               </button>
             </div>
           )}
-          {user && menuOpen && (
-            <div className="absolute z-30 w-screen mt-[100px] bg-white ">
-              <ul className="">
-                <li
-                  className="p-4 font-bold border-b "
-                  onClick={() => {
-                    homeButton();
-                    setMenuOpen(!menuOpen);
-                  }}
-                >
-                  {" "}
-                  Home{" "}
-                </li>
-                <li
-                  className="p-4 font-bold border-b"
-                  onClick={() => {
-                    recipeButton();
-                    setMenuOpen(!menuOpen);
-                  }}
-                >
-                  {" "}
-                  Recipe{" "}
-                </li>
-                <li
-                  className="p-4 font-bold border-b"
-                  onClick={() => {
-                    calorieCheckButton();
-                    setMenuOpen(!menuOpen);
-                  }}
-                >
-                  {" "}
-                  Calorie Check{" "}
-                </li>
-                <li
-                  className="p-4 font-bold border-b"
-                  onClick={() => {
-                    addMealButton();
-                    setMenuOpen(!menuOpen);
-                  }}
-                >
-                  {" "}
-                  Add Meal{" "}
-                </li>
-                <li
-                  className="p-4 font-bold border-b"
-                  onClick={() => {
-                    contactButton();
-                    setMenuOpen(!menuOpen);
-                  }}
-                >
-                  {" "}
-                  Contact us{" "}
-                </li>
-                <li
-                  className="p-4 font-bold border-b"
-                  onClick={() => {
-                    handleSignOut();
-                    setMenuOpen(!menuOpen);
-                  }}
-                >
-                  {" "}
-                  Sign out{" "}
-                </li>
-              </ul>
-            </div>
-          )}
         </div>
+        {user && menuOpen && (
+          <div className="lg:hidden absolute z-30 w-full mt-5 bg-white ">
+            <ul className="">
+              <li
+                className="p-4 font-bold border-b "
+                onClick={() => {
+                  homeButton();
+                  setMenuOpen(!menuOpen);
+                }}
+              >
+                {" "}
+                Home{" "}
+              </li>
+              <li
+                className="p-4 font-bold border-b"
+                onClick={() => {
+                  recipeButton();
+                  setMenuOpen(!menuOpen);
+                }}
+              >
+                {" "}
+                Recipe{" "}
+              </li>
+              <li
+                className="p-4 font-bold border-b"
+                onClick={() => {
+                  calorieCheckButton();
+                  setMenuOpen(!menuOpen);
+                }}
+              >
+                {" "}
+                Calorie Check{" "}
+              </li>
+              <li
+                className="p-4 font-bold border-b"
+                onClick={() => {
+                  addMealButton();
+                  setMenuOpen(!menuOpen);
+                }}
+              >
+                {" "}
+                Add Meal{" "}
+              </li>
+              <li
+                className="p-4 font-bold border-b"
+                onClick={() => {
+                  contactButton();
+                  setMenuOpen(!menuOpen);
+                }}
+              >
+                {" "}
+                Contact us{" "}
+              </li>
+              <li
+                className="p-4 font-bold border-b"
+                onClick={() => {
+                  handleSignOut();
+                  setMenuOpen(!menuOpen);
+                }}
+              >
+                {" "}
+                Sign out{" "}
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
