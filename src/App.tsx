@@ -8,6 +8,7 @@ import RecipeGpt from "./components/RecipeGpt";
 import Login from "./components/Login";
 import AskGpt from "./components/AskGpt";
 import AddMeal from "./components/AddMeal";
+import Error from "./components/Error";
 
 function AppLayout() {
   return (
@@ -24,7 +25,7 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-    // errorElement: <Error />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
