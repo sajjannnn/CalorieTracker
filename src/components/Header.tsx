@@ -1,12 +1,11 @@
 import { auth } from "../utilis/firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { addUser, removeUser } from "../utilis/userSlice";
 import { LOGO_URL } from "../utilis/constants";
 import { type RootState } from "../utilis/appStore";
-import { setActivePage } from "../utilis/activePage";
 import { IoMdHome } from "react-icons/io";
 import { IoIosCall } from "react-icons/io";
 import { GiMeal } from "react-icons/gi";
@@ -16,7 +15,6 @@ import { LuChefHat } from "react-icons/lu";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const page = useSelector((store: RootState) => store.activePage.page);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -45,52 +43,35 @@ const Header = () => {
         navigate("/error");
       });
   };
-  const recipeButton = () => {
-    navigate("/recipe");
-    dispatch(setActivePage("/recipe"));
-  };
-  const contactButton = () => {
-    navigate("/contact");
-    dispatch(setActivePage("/contact"));
-  };
-  const homeButton = () => {
-    navigate("/");
-    dispatch(setActivePage("/"));
-  };
-  const calorieCheckButton = () => {
-    navigate("/calorie-check");
-    dispatch(setActivePage("/calorie-check"));
-  };
-  const addMealButton = () => {
-    navigate("/add-meal");
-    dispatch(setActivePage("/add-meal"));
+  const activeAnimation = (isActive: boolean) => {
+    return isActive ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]";
   };
 
   return (
     <div className="flex justify-center w-screen md:fixed h-[100px] border-b-2 border-gray-400 bg-white">
       <div className="w-7xl">
         <div className=" flex justify-between items-center w-full text-gray-700  md:px-6 ">
-          <img className="h-20" src={LOGO_URL} alt="" onClick={homeButton} />
+          <img className="h-20" src={LOGO_URL} alt="" />
           {/* <h1 className="font-serif text-6xl font-extrabold bg-white my-2 py-4 ">Food Tracker </h1> */}
           {user && (
             <div className="hidden lg:block lg:flex justify-between items-center gap-4 text-xl ">
-              <button className={" p-2 flex items-center" + (page === "/" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={homeButton}>
+              <NavLink to="/" className={({ isActive }) => `p-2 flex items-center ${activeAnimation(isActive)}`}>
+                Home
                 <IoMdHome />
-                Home{" "}
-              </button>
-              <button className={" p-2 flex items-center justify-center" + (page === "/calorie-check" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={calorieCheckButton}>
+              </NavLink>{" "}
+              <NavLink to="/calorie-check" className={({ isActive }) => `p-2 flex items-center ${activeAnimation(isActive)}`}>
                 <IoAddSharp /> Calorie Check{" "}
-              </button>
-              <button className={" p-2 flex items-center justify-center" + (page === "/recipe" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={recipeButton}>
+              </NavLink>{" "}
+              <NavLink to="/recipe" className={({ isActive }) => `p-2 flex items-center ${activeAnimation(isActive)}`}>
                 <LuChefHat />
-                Recipe{" "}
-              </button>{" "}
-              <button className={"p-2 flex items-center justify-center" + (page === "/add-meal" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={addMealButton}>
+                Recipe
+              </NavLink>{" "}
+              <NavLink to="/add-meal" className={({ isActive }) => `p-2 flex items-center ${activeAnimation(isActive)}`}>
                 <GiMeal /> Add Meal{" "}
-              </button>
-              <button className={"p-2 flex items-center justify-center" + (page === "/contact" ? " bg-green-500 rounded text-white" : "hover:bg-[#f8f7f3]")} onClick={contactButton}>
+              </NavLink>{" "}
+              <NavLink to="/contact" className={({ isActive }) => `p-2 flex items-center ${activeAnimation(isActive)}`}>
                 <IoIosCall /> Contact us{" "}
-              </button>{" "}
+              </NavLink>
             </div>
           )}
           {user && (
@@ -98,74 +79,61 @@ const Header = () => {
               <button className="hidden lg:block my-8 px-3 py-1 rounded text-sm md:text-xl hover:bg-green-500 hover:text-white" onClick={handleSignOut}>
                 ➜] Sign out{" "}
               </button>
-              <button className="lg:hidden text-3xl mr-2" onClick={() => setMenuOpen(!menuOpen)}>
+              <button
+                className="lg:hidden text-3xl mr-2 my-8"
+                onClick={() => {
+                  setMenuOpen(!menuOpen);
+                }}
+              >
                 ☰
               </button>
             </div>
           )}
         </div>
         {user && menuOpen && (
-          <div className="lg:hidden absolute z-30 w-full mt-5 bg-white ">
+          <div className="lg:hidden absolute z-30 w-full bg-white ">
             <ul className="">
-              <li
-                className="p-4 font-bold border-b "
-                onClick={() => {
-                  homeButton();
-                  setMenuOpen(!menuOpen);
-                }}
-              >
-                {" "}
-                Home{" "}
+              <li>
+                <Link to="/" className=" block p-4 font-bold border-b " onClick={() => setMenuOpen(false)}>
+                  Home
+                </Link>
               </li>
-              <li
-                className="p-4 font-bold border-b"
-                onClick={() => {
-                  recipeButton();
-                  setMenuOpen(!menuOpen);
-                }}
-              >
-                {" "}
-                Recipe{" "}
+              <li>
+                <Link to="/calorie-check" className=" block p-4 font-bold border-b " onClick={() => setMenuOpen(false)}>
+                  Calorie Check{" "}
+                </Link>
               </li>
-              <li
-                className="p-4 font-bold border-b"
-                onClick={() => {
-                  calorieCheckButton();
-                  setMenuOpen(!menuOpen);
-                }}
-              >
-                {" "}
-                Calorie Check{" "}
+              <li>
+                <Link to="/recipe" className=" block p-4 font-bold border-b " onClick={() => setMenuOpen(false)}>
+                  {" "}
+                  Recipe{" "}
+                </Link>
               </li>
-              <li
-                className="p-4 font-bold border-b"
-                onClick={() => {
-                  addMealButton();
-                  setMenuOpen(!menuOpen);
-                }}
-              >
-                {" "}
-                Add Meal{" "}
+
+              <li>
+                <Link to="/add-meal" className=" block p-4 font-bold border-b " onClick={() => setMenuOpen(false)}>
+                  {" "}
+                  Add Meal{" "}
+                </Link>
               </li>
-              <li
-                className="p-4 font-bold border-b"
-                onClick={() => {
-                  contactButton();
-                  setMenuOpen(!menuOpen);
-                }}
-              >
-                {" "}
-                Contact us{" "}
+
+              <li>
+                <Link to="/contact" className=" block p-4 font-bold border-b " onClick={() => setMenuOpen(false)}>
+                  {" "}
+                  Contact Us
+                </Link>
               </li>
-              <li
-                className="p-4 font-bold border-b"
-                onClick={() => {
-                  handleSignOut();
-                  setMenuOpen(!menuOpen);
-                }}
-              >
-                {" "}
-                Sign out{" "}
+              <li>
+                <Link
+                  to="/"
+                  className=" block p-4 font-bold border-b "
+                  onClick={() => {
+                    handleSignOut();
+                    setMenuOpen(false);
+                  }}
+                >
+                  Sign Out
+                </Link>
               </li>
             </ul>
           </div>
