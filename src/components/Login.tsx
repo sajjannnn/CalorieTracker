@@ -5,7 +5,6 @@ import { auth } from "../utilis/firebase";
 import { addUser } from "../utilis/userSlice";
 import { useDispatch } from "react-redux";
 import { LOGIN_BG_URL, USER_AVATAR } from "../utilis/constants";
-// import {USER_AVATAR} from "../utilis/contants";
 
 let para1: string = "";
 let para2: string = "";
@@ -36,7 +35,6 @@ const Login = () => {
     if (!isSignin) {
       createUserWithEmailAndPassword(auth, para1, para2)
         .then((userCredential) => {
-          // Signed up
           const user = userCredential.user;
           updateProfile(user, {
             displayName: para3,
@@ -61,7 +59,6 @@ const Login = () => {
     } else {
       signInWithEmailAndPassword(auth, para1, para2)
         .then((userCredential) => {
-          // Signed in
           const user = userCredential.user;
           console.log(user);
         })
@@ -73,8 +70,6 @@ const Login = () => {
     }
   };
 
-  // } else {
-  // }
   return (
     <div className="h-screen md:grid grid-cols-12 bg-[#f8f7f3]">
       <div className=" col-span-7">

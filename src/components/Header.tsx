@@ -23,7 +23,7 @@ const Header = () => {
       if (user) {
         const { uid, email, displayName, photoURL } = user;
         dispatch(addUser({ uid: uid, email: email || null, displayName: displayName || null, photoURL: photoURL || null }));
-        if(location.pathname == "/login") navigate("/");
+        if (location.pathname == "/login") navigate("/");
       } else {
         dispatch(removeUser());
         navigate("/login");
@@ -34,8 +34,7 @@ const Header = () => {
   const user = useSelector((store: RootState) => store.user);
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {
-      })
+      .then(() => {})
       .catch(() => {
         navigate("/error");
       });
@@ -48,7 +47,9 @@ const Header = () => {
     <div className="flex justify-center w-screen md:fixed h-[100px] border-b-2 border-gray-400 bg-white">
       <div className="w-7xl">
         <div className=" flex justify-between items-center w-full text-gray-700  md:px-6 ">
-          <img className="h-20" src={LOGO_URL} alt="" />
+          <Link to="/">
+            <img className="h-20" src={LOGO_URL} alt="" />{" "}
+          </Link>
           {/* <h1 className="font-serif text-6xl font-extrabold bg-white my-2 py-4 ">Food Tracker </h1> */}
           {user && (
             <div className="hidden lg:block lg:flex justify-between items-center gap-4 text-xl ">
