@@ -1,5 +1,5 @@
 import { auth } from "../utilis/firebase";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -16,30 +16,27 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName, photoURL } = user;
         dispatch(addUser({ uid: uid, email: email || null, displayName: displayName || null, photoURL: photoURL || null }));
-        navigate("/");
+        if(location.pathname == "/login") navigate("/");
       } else {
-        // User is signed out
         dispatch(removeUser());
         navigate("/login");
       }
     });
-
     return unsubscribe;
   }, []);
   const user = useSelector((store: RootState) => store.user);
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
       })
       .catch(() => {
-        // An error happened.
         navigate("/error");
       });
   };
