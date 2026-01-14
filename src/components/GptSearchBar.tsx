@@ -130,10 +130,10 @@ Text: ${searchText?.current?.value || "none"}
   };
 
   return (
-    <div className="flex flex-col font-bold items-center text-2xl  ">
-      <h1 className="md:mb-[20px] font-bold text-2xl w-full md:text-5xl">Welcome {username}!</h1>
-      <p className="flex text-3xl justify-center"><FaCameraRetro />Analyze Food</p>
-      <form className="max-w-5xl flex justify-between px-4 m-8 text-sm border border-gray-300 rounded-3xl py-4 bg-white" onSubmit={(e) => e.preventDefault()}>
+    <div className="flex flex-col font-bold items-center ">
+      <h1 ><FaCameraRetro />Analyze Food</h1>
+      <p className="m-down">Upload a photo of your meal to instantly get calorie and nutrition info.</p>
+      <form className="max-w-5xl " onSubmit={(e) => e.preventDefault()}>
        
         <button className="text-gray-400 bg-[#f7f7ec] text-center px-4 rounded-2xl text-2xl" onClick={moreOptions}>
           +
@@ -143,8 +143,8 @@ Text: ${searchText?.current?.value || "none"}
             <input className="text-gray-500 bg-[#f8f7f3]" type="file" accept="image/png,image/jpeg" onChange={handleFile} />
           </div>
         )}
-        <input type="text" className="p-4 bg-[#f8f7f3] border-gray-300 lg:w-[600px] mx-2 rounded-2xl " placeholder="Check Food Nutritions" ref={searchText} />
-        <button className="py-2 px-4 bg-green-500 hover:bg-green-400 text-white rounded-2xl md:text-2xl" onClick={handleGptSearchCLick} disabled={isLoading}>
+        <input type="text" className="lg:w-[600px] " placeholder="Check Food Nutritions" ref={searchText} />
+        <button className="" onClick={handleGptSearchCLick} disabled={isLoading}>
           {isLoading ? "Analyzing..." : "Check Nutrition"}
         </button>
       </form>

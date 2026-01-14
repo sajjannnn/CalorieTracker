@@ -42,11 +42,11 @@ const AddMeal = () => {
     navigate("/");
   };
   return (
-    <div className="md:pt-[150px] flex justify-center bg-[#f8f7f3] h-screen">
+    <div className="m-header flex justify-center bg-[#f8f7f3] h-screen">
       <div className="lg:w-7xl flex flex-col items-center ">
-        <div className="text-bold text-4xl my-3">Add Meal</div>
-        <p className="text-gray-500">Log your meal manually to track your daily intake</p>
-        <div className="w-2/3 border border-gray-300 rounded-2xl p-6 mt-6 bg-white">
+        <h1>Add Meal</h1>
+        <p className="m-down ">Log your meal manually to track your daily intake</p>
+        <div className="w-2/3 border border-gray-300 rounded-2xl p-6 bg-white">
           <form className="space-y-6" ref={fromRef} onSubmit={addMeal}>
             <div className="flex flex-col">
               <label htmlFor="mealName"> Food Name </label>

@@ -6,7 +6,7 @@ const RecipeContent = () => {
   const content = useSelector((store: RootState) => store.recipe.recipeResult);
   return (
     <div className="border-2 border-gray-300 rounded-3xl mx-4 bg-white ">
-      <div className="flex flex-col h-full justify-center min-h-[380px] items-center text-center ">
+      <div className="flex flex-col h-full p-4 justify-center min-h-[380px] items-center text-center ">
         <p className="text-8xl flex justify-center">
               <FaBowlFood  className="text-gray-900"/>
             </p>

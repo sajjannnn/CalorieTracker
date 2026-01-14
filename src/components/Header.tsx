@@ -44,7 +44,7 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-center w-screen md:fixed h-[100px] border-b-2 border-gray-400 bg-white">
+    <div className="flex justify-center w-screen md:fixed h-[100px] border-b-2 border-gray-300 bg-white">
       <div className="w-7xl">
         <div className=" flex justify-between items-center w-full text-gray-700  md:px-6 ">
           <Link to="/">
@@ -54,37 +54,37 @@ const Header = () => {
           {user && (
             <div className="hidden lg:block lg:flex justify-between items-center gap-4 text-xl ">
               <NavLink to="/" className={({ isActive }) => `p-2 flex items-center ${activeAnimation(isActive)}`}>
+                <IoMdHome className="mr-1"/>
                 Home
-                <IoMdHome />
               </NavLink>{" "}
               <NavLink to="/calorie-check" className={({ isActive }) => `p-2 flex items-center ${activeAnimation(isActive)}`}>
-                <IoAddSharp /> Calorie Check{" "}
+                <IoAddSharp className="mr-1"/> Calorie Check{" "}
               </NavLink>{" "}
               <NavLink to="/recipe" className={({ isActive }) => `p-2 flex items-center ${activeAnimation(isActive)}`}>
-                <LuChefHat />
+                <LuChefHat className="mr-1"/>
                 Recipe
               </NavLink>{" "}
               <NavLink to="/add-meal" className={({ isActive }) => `p-2 flex items-center ${activeAnimation(isActive)}`}>
-                <GiMeal /> Add Meal{" "}
+                <GiMeal className="mr-1"/> Add Meal{" "}
               </NavLink>{" "}
               <NavLink to="/contact" className={({ isActive }) => `p-2 flex items-center ${activeAnimation(isActive)}`}>
-                <IoIosCall /> Contact us{" "}
+                <IoIosCall className="mr-1"/> Contact us{" "}
               </NavLink>
             </div>
           )}
           {user && (
             <div className="flex  ">
-              <button className="hidden lg:block my-8 px-3 py-1 rounded text-sm md:text-xl hover:bg-green-500 hover:text-white" onClick={handleSignOut}>
+              <div className="hidden lg:block my-8 px-3 py-1 rounded text-sm md:text-xl hover:bg-green-500 hover:text-white" onClick={handleSignOut}>
                 ➜] Sign out{" "}
-              </button>
-              <button
+              </div>
+              <div
                 className="lg:hidden text-3xl mr-2 my-8"
                 onClick={() => {
                   setMenuOpen(!menuOpen);
                 }}
               >
                 ☰
-              </button>
+              </div>
             </div>
           )}
         </div>

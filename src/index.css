@@ -4,3 +4,34 @@
   --secondary: 210 40% 96%;
   --accent: 25 95% 53%;
 }
+
+@layer utilities{
+  .border-round {
+    @apply border border-gray-300 rounded-3xl;
+  }
+  .m-header {
+    @apply  pt-[150px] 
+  }
+  .m-down {
+    @apply mb-8
+  }
+  
+}
+
+@layer base{ 
+  h1 {
+    @apply text-7xl md:text-2xl font-bold text-center flex justify-center items-center gap-2
+  }
+  p{
+    @apply text-gray-600 font-normal
+  }
+  button{
+    @apply bg-green-500 hover:bg-green-400 rounded-2xl text-2xl text-white p-2 font-bold
+  }
+  input{
+    @apply border border-gray-300 rounded-3xl bg-[#f8f7f3] text-gray-600 p-4
+  }
+  form {
+    @apply py-4 bg-white flex justify-between px-4 text-sm border border-gray-300 rounded-3xl;
+  }
+}
