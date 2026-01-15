@@ -34,10 +34,12 @@ const Login = () => {
     para2 = password.current?.value ?? "";
     para3 = name.current?.value ?? "";
     para4 = confirmPassword.current?.value ?? "";
+    setMessage("");
 
-    setMessage(validator(para1, para2));
+  const error = validator(para1, para2);
+setMessage(error);
 
-    if (message) return;
+if (error) return;
     if (!isSignin && para4 != para2) {
       setMessage("Password doesn't Match");
       console.log("yess");
@@ -64,9 +66,10 @@ const Login = () => {
             });
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setMessage(errorCode + errorMessage);
+        const cleanError = error.code.replace("auth/", "");
+          // const errorMessage = error.message;
+         
+          setMessage(cleanError);
         });
     } else {
       signInWithEmailAndPassword(auth, para1, para2)
@@ -75,42 +78,45 @@ const Login = () => {
           console.log(user);
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setMessage(errorCode );
+                 const cleanError = error.code.replace("auth/", "");
+
+         
+           setMessage(cleanError);
+
+      
         });
     }
   };
 
   return (
     <div className="h-screen w-full flex justify-center items-center bg-[#f8f7f3]">
-      <form className=" w-min-[390px] py-5 bg-white p-4 flex flex-col justify-center items-center md:border border-gray-300 gap-4 md:gap-7 rounded-2xl md:shadow-2xl">
+      <form  onSubmit={(e) => checkValidator(e)} className=" py-5 bg-white p-4 flex flex-col justify-center items-center md:border border-gray-300 gap-4 rounded-2xl md:shadow-2xl">
         <h1 className="font-bold text-2xl md:text-4xl"> {isSignin ? "Sign In" : "Sign Up"} </h1>
-        <div className="flex flex-col gap-3 md:gap-5">
-          {!isSignin && <input className="p-3 px-4 bg-[#f8f7f3] border-gray-300 border rounded-2xl" ref={name} type="text" placeholder="Name" />}
-          <input className="p-3 px-4 border bg-[#f8f7f3] border-gray-300 rounded-2xl" ref={email} type="text" placeholder="Email Address" />
+        <div className="flex flex-col gap-3 ">
+          {!isSignin && <input className="p-3 px-4 bg-[#f8f7f3] border-gray-300 border rounded-2xl text-sm md:text-base" ref={name} required type="text" placeholder="Name" />}
+          <input required className="p-3 px-4 border bg-[#f8f7f3] border-gray-300 rounded-2xl text-sm md:text-base" ref={email} type="text" placeholder="Email Address" />
 
           <div className="relative w-full">
-            <input ref={password} type={isShowPassword ? "text" : "password"} placeholder="Password" className="p-3 px-4 pr-12 w-full border bg-[#f8f7f3] border-gray-300 rounded-2xl" />
+            <input ref={password}  required type={isShowPassword ? "text" : "password"} placeholder="Password" className="text-sm md:text-base p-3 px-4 pr-12 w-full border bg-[#f8f7f3] border-gray-300 rounded-2xl" />
 
-            <button type="button" onClick={() => setIsShowPassword(!isShowPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-gray-600">
+            <button type="button"  onClick={() => setIsShowPassword(!isShowPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-gray-600 colour">
               {isShowPassword ? <LuEye /> : <LuEyeClosed />}
             </button>
           </div>
 
           {!isSignin && (
             <div className="relative w-full">
-              <input ref={confirmPassword} type={isShowPassword ? "text" : "password"} placeholder="Confirm Password" className="p-3 px-4 pr-12 w-full bg-[#f8f7f3] border-input" />
+              <input ref={confirmPassword} required type={isShowPassword ? "text" : "password"} placeholder="Confirm Password" className="p-3 px-4 pr-12 w-full bg-[#f8f7f3] border-input" />
 
-              <button type="button" onClick={() => setIsShowConPassword(!isShowConPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-gray-600">
+              <button type="button" onClick={() => setIsShowConPassword(!isShowConPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-gray-600 colour">
                 {isShowConPassword ? <LuEye /> : <LuEyeClosed />}
               </button>
             </div>
           )}
-          <p className={message ? " text-gray-500 " : "hidden"}>{message}</p>
+          <p className={message ? "text-center text-gray-500 " : "hidden"}>{message}</p>
         </div>
 
-        <button onClick={(e) => checkValidator(e)} className="w-full bg-green-500  rounded-2xl hover:bg-green-400 text-white rounded px-8 py-2 text-xl hover:bg-gray-400">
+        <button type="submit" className="w-full bg-green-500  rounded-2xl hover:bg-green-400 text-white rounded px-8 py-2 text-xl hover:bg-gray-400">
           {isSignin ? "Sign In" : "Sign Up"}
         </button>
         <p className="cursor-pointer text-gray-700" onClick={LoginType}>

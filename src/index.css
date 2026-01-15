@@ -7,31 +7,42 @@
 
 @layer utilities{
   .border-round {
-    @apply border border-gray-300 rounded-3xl;
+    @apply border-2 border-gray-300 rounded-3xl;
   }
   .m-header {
-    @apply  pt-[150px] 
+    @apply  pt-[120px] 
   }
   .m-down {
     @apply mb-8
   }
-  
+  .m-between-components{
+    @apply my-4
+  }
+  .colour {
+    @apply bg-[#f8f7f3]
+  }
+  .w-card {
+    @apply w-[330px]
+  }
 }
 
 @layer base{ 
   h1 {
-    @apply text-7xl md:text-2xl font-bold text-center flex justify-center items-center gap-2
+    @apply text-4xl font-bold text-center flex justify-center items-center gap-2
   }
   p{
     @apply text-gray-600 font-normal
   }
   button{
-    @apply bg-green-500 hover:bg-green-400 rounded-2xl text-2xl text-white p-2 font-bold
+    @apply bg-green-500 hover:bg-green-400 rounded-3xl text-2xl text-white p-2 font-semibold
   }
   input{
-    @apply border border-gray-300 rounded-3xl bg-[#f8f7f3] text-gray-600 p-4
+    @apply border border-gray-300 rounded-2xl bg-[#f8f7f3] text-gray-600 py-2 px-4 text-sm md:text-base
   }
-  form {
+  /* form {
     @apply py-4 bg-white flex justify-between px-4 text-sm border border-gray-300 rounded-3xl;
+  } */
+  h2{
+    @apply text-2xl font-semibold my-2
   }
 }

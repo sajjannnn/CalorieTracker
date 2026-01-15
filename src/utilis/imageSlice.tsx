@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { LOGIN_BG_URL } from "./constants";
 
 const imageSlice = createSlice({
   name: "image",
   initialState: {
-    image_Url: LOGIN_BG_URL,
+    image_Url: "",
     image_Base64: null as string | null,
   },
   reducers: {

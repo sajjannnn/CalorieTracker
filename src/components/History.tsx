@@ -7,11 +7,11 @@ const History = () => {
  const data = useSelector((store:RootState) => store.meal.data)
 const dispatch = useDispatch();
   return (
-    <div>
+    <div className="m-between-components">
       <div className="flex justify-between items-center">
-        <div className="font-bold text-2xl my-5">Today's Meal</div>
+        <h2>Today's Meal</h2>
         <button
-          className="p-2 bg-green-500 hover:shadow-2xl font-bold text-xl rounded-2xl text-white"
+          className="mb-2 bg-green-500 hover:shadow-2xl font-bold text-xl rounded-2xl text-white"
           onClick={() => dispatch(clearMeal())}
         >
           Reset Day

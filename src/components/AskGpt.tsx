@@ -1,18 +1,19 @@
 import GptCard from "./GptCard";
-import GptSearchBar from "./GptSearchBar";
+import { FaCameraRetro } from "react-icons/fa";
 
 const AskGpt = () => {
   return (
     <div className="m-header w-screen flex justify-center bg-[#f8f7f3] h-screen">
-      <div className="w-screen lg:w-7xl">
+      <div className="">
+        <h1>
+          <FaCameraRetro />
+          Analyze Food
+        </h1>
+        <p className="m-down text-center">Upload a photo of your meal to instantly get calorie and nutrition info.</p>
         <div>
-        <GptSearchBar />
-      </div>
-      <div className="mx-16 ">
-      <GptCard />
-      </div>
+          <GptCard />
         </div>
-
+      </div>
     </div>
   );
 };
